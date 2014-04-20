@@ -1,7 +1,16 @@
+
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+
+if [ -f ~/.local/bin/bashmarks.sh ]; then
+  source ~/.local/bin/bashmarks.sh
+fi
+
+
 set -o vi
 
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
 export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
 #export JRE_HOME="/usr/lib/jvm/jdk1.7.0_25/jre"
 export PROJECTS_HOME="/home/webkell/Projects"
@@ -51,10 +60,6 @@ alias emacsc="emacsclient"
 
 
 
-if [ -f ~/.local/bin/bashmarks.sh ]; then
-  source ~/.local/bin/bashmarks.sh
-fi
-
 
 
 # EXAMPLES
@@ -67,3 +72,5 @@ fi
 # git reset HEAD somefile.txt
 
 emacs --daemon > /dev/null 2>&1 &
+
+
