@@ -13,7 +13,7 @@ set -o vi
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
 #export JRE_HOME="/usr/lib/jvm/jdk1.7.0_25/jre"
-export PROJECTS_HOME="/home/webkell/Projects"
+export PROJECTS_HOME="~/Projects"
 export CLOJURESCRIPT_HOME="$PROJECTS_HOME/bkell/vendor/clojurescript"
 export PATH="$PATH:\
 ~/bin/:\
@@ -45,8 +45,8 @@ alias gd="g dwn"
 alias gi="g in"
 alias gip="g ip"
 
-alias ebashp="vim /home/webkell/.bash_profile"
-alias evimrc="vim /home/webkell/.vimrc"
+alias ebashp="vim ~/.bash_profile"
+alias evimrc="vim ~/.vimrc"
 alias lrepl="lein repl"
 alias rf="rm -rf"
 alias hr="heroku"
@@ -73,4 +73,8 @@ alias emacsc="emacsclient"
 
 emacs --daemon > /dev/null 2>&1 &
 
+
+if [ -f ~/.bash_local ]; then
+  . ~/.bash_local
+fi
 
