@@ -1,29 +1,44 @@
 
-"set term=builtin_xterm
-"set nocompatible
-source /Users/timothyw/.vim/syntax/clojure.vim
-source /Users/timothyw/.vim/bundles/NERD_commenter.vim 
-set ai
-syntax on
+set nocompatible
+
+:function! VimClojureCheck()
+:   if filereadable("~/.vim/syntax/clojure.vim")
+:       
+:       echo "~/.vim/syntax/clojure.vim exists... loading"
+:       source ~/.vim/syntax/clojure.vim
+:
+:       let g:clj_highlight_builtins=1 
+:       let g:clj_paren_rainbow=1
+:   endif
+:endfunction
+
+:function! VundleCheck()
+:   "if filereadable("SpecificFile")
+:       echo "SpecificFile exists"
+:
+:       let g:Powerline_symbols = 'fancy'
+:       call vundle#rc()
+:
+:       " Bundle 'gmarik/vundle'
+:       " Bundle 'Lokaltog/vim-powerline'
+:   "endif
+:endfunction
 
 
-let g:Powerline_symbols = 'fancy'
+:call VimClojureCheck()
+:call VundleCheck()
+
 
 " installing tweaks from 'http://stevelosh.com/blog/2010/09/coming-home-to-vim/#pathogen'
 filetype off
 filetype plugin indent on
+
+
+syntax on
 set modelines=0
-
+set ai
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/vim-powerline'
-
-
-" clojure stuff 
-let g:clj_highlight_builtins=1 
-let g:clj_paren_rainbow=1
 
 " some general stuff 
 set tabstop=2
