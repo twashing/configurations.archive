@@ -1,6 +1,10 @@
 #!/bin/bash
 
 
+# Tools 
+echo "Install General Tools"
+sudo apt-get -y install tree tmux bundler
+
 # Git 
 echo "Installing Git..."
 sudo apt-get update
