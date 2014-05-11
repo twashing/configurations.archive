@@ -3,16 +3,16 @@
 
 # Git 
 echo "Installing Git..."
-apt-get update
-apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
-apt-get -y install git
+sudo apt-get update
+sudo apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+sudo apt-get -y install git
 
 # Java 
 echo "Installing Java..."
-apt-get -y install python-software-properties
-add-apt-repository -y ppa:webupd8team/java
-apt-get update
-apt-get -y install oracle-java7-installer
+sudo apt-get -y install python-software-properties
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get -y install oracle-java7-installer
 
 # Leiningen
 echo "Installing Leiningen..."
@@ -25,6 +25,4 @@ chmod u+x ~/bin/lein
 echo "Downloading Interruptsoftware.com project..."
 mkdir ~/Project && cd ~/Project
 git clone https://github.com/twashing/interruptsoftware.git
-cd interruptsoftware/ 
-ll
 
