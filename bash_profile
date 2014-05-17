@@ -10,7 +10,9 @@ fi
 function ubuntu-version {
   lsb_release -a
 }
-
+function ubuntu-packages {
+  dpkg --get-selections | grep -v deinstall
+}
 
 set -o vi
 
