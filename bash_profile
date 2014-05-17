@@ -7,6 +7,10 @@ if [ -f ~/.local/bin/bashmarks.sh ]; then
   source ~/.local/bin/bashmarks.sh
 fi
 
+function ubuntu-version {
+  lsb_release -a
+}
+
 
 set -o vi
 
