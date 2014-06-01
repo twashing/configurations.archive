@@ -38,8 +38,6 @@ echo; echo ">> Installing Leiningen..."
 mkdir ~/bin &&
 wget -O ~/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein &&
 chmod u+x ~/bin/lein &&
-~/bin/lein &&
-
 
 # Configurations
 echo; echo ">> Setting Configurations..."
@@ -51,7 +49,6 @@ ln -s Projects/configurations/init.el ~/.live-packs/$(echo $USER)-pack/init.el &
 ln -s Projects/configurations/lein_profiles.clj ~/.lein/profiles.clj &&
 ln -s Projects/configurations/tmux.conf ~/.tmux.conf &&
 ln -s Projects/configurations/vimrc ~/.vimrc &&
-
 
 # Backup old ruby lib & uninstall 
 echo; echo ">> Backing up old ruby libs & uninstall..."
@@ -70,7 +67,7 @@ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv &&
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_local &&
 echo 'eval "$(rbenv init -)"' >> ~/.bash_local &&
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &&
-rbenv install 2.1.2 &&
+~/.rbenv/bin/rbenv install 2.1.2 &&
 
 # Gem 
 
