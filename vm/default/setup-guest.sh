@@ -43,12 +43,12 @@ chmod u+x ~/bin/lein &&
 echo; echo ">> Setting Configurations..."
 mkdir -p Projects &&
 git clone https://github.com/twashing/configurations.git Projects/configurations &&
-ln -s Projects/configurations/bash_profile ~/.bash_profile &&
-ln -s Projects/configurations/bashrc ~/.bashrc &&
-ln -s Projects/configurations/init.el ~/.live-packs/$(echo $USER)-pack/init.el &&
-ln -s Projects/configurations/lein_profiles.clj ~/.lein/profiles.clj &&
-ln -s Projects/configurations/tmux.conf ~/.tmux.conf &&
-ln -s Projects/configurations/vimrc ~/.vimrc &&
+ln -s ~/Projects/configurations/bash_profile ~/.bash_profile &&
+ln -s ~/Projects/configurations/bashrc ~/.bashrc &&
+ln -s ~/Projects/configurations/init.el ~/.live-packs/$(echo $USER)-pack/init.el &&
+ln -s ~/Projects/configurations/lein_profiles.clj ~/.lein/profiles.clj &&
+ln -s ~/Projects/configurations/tmux.conf ~/.tmux.conf &&
+ln -s ~/Projects/configurations/vimrc ~/.vimrc &&
 
 # Backup old ruby lib & uninstall 
 echo; echo ">> Backing up old ruby libs & uninstall..."
