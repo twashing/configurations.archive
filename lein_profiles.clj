@@ -1,6 +1,6 @@
 {:user
  {:plugins [[lein-ancient "0.5.5"]
-            [lein-marginalia "0.7.1"]
+            [codox "0.8.8"]
             [lein-ritz "0.7.0"]
             [lein-midje "3.1.3"]
             [lein-midje-doc "0.0.22"]
