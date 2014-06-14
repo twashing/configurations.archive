@@ -1,12 +1,29 @@
 #!/bin/bash
 
 
+# Change to Root
+echo; echo ">> Changing to Root..."
+sudo su - 
+
+# New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
+echo; echo ">> Creating New User..."
+echo -n "Please supply a username: "
+read line
+adduser --disabled-password --gecos "" $line
+
+passwd $line
+chown $line:users "/home/$line"
+
+# Change to New User 
+sudo su - $line
+
+# Update Tools
 echo; echo ">> Updating Apt-Get listings..."
 sudo apt-get update && 
 
 # Tools 
 echo; echo ">> Installing General Tools..."
-sudo apt-get -y install tree tmux build-essential &&
+sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev &&
 
 # Vim 
 echo; echo ">> Installing Vim..."
@@ -35,9 +52,10 @@ sudo apt-get -y install oracle-java7-installer &&
 
 # Leiningen
 echo; echo ">> Installing Leiningen..."
-mkdir ~/bin &&
+mkdir ~/bin   # may already exist
 wget -O ~/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein &&
 chmod u+x ~/bin/lein &&
+lein
 
 # Configurations
 echo; echo ">> Setting Configurations..."
