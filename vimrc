@@ -1,32 +1,32 @@
 
 set nocompatible
 
-:function! VimClojureCheck()
-:   if filereadable("~/.vim/syntax/clojure.vim")
-:       
-:       echo "~/.vim/syntax/clojure.vim exists... loading"
-:       source ~/.vim/syntax/clojure.vim
-:
-:       let g:clj_highlight_builtins=1 
-:       let g:clj_paren_rainbow=1
-:   endif
-:endfunction
-
-:function! VundleCheck()
-:   "if filereadable("SpecificFile")
-:       echo "SpecificFile exists"
-:
-:       let g:Powerline_symbols = 'fancy'
-:       call vundle#rc()
-:
-:       " Bundle 'gmarik/vundle'
-:       " Bundle 'Lokaltog/vim-powerline'
-:   "endif
-:endfunction
-
-
-:call VimClojureCheck()
-:call VundleCheck()
+":function! VimClojureCheck()
+":   if filereadable("~/.vim/syntax/clojure.vim")
+":       
+":       echo "~/.vim/syntax/clojure.vim exists... loading"
+":       source ~/.vim/syntax/clojure.vim
+":
+":       let g:clj_highlight_builtins=1 
+":       let g:clj_paren_rainbow=1
+":   endif
+":endfunction
+"
+":function! VundleCheck()
+":   "if filereadable("SpecificFile")
+":       echo "SpecificFile exists"
+":
+":       let g:Powerline_symbols = 'fancy'
+":       call vundle#rc()
+":
+":       " Bundle 'gmarik/vundle'
+":       " Bundle 'Lokaltog/vim-powerline'
+":   "endif
+":endfunction
+"
+"
+":call VimClojureCheck()
+":call VundleCheck()
 
 
 " installing tweaks from 'http://stevelosh.com/blog/2010/09/coming-home-to-vim/#pathogen'
