@@ -69,8 +69,6 @@ echo 'eval "$(rbenv init -)"' >> ~/.bash_local &&
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &&
 ~/.rbenv/bin/rbenv install 2.1.2 &&
 
-# Gem 
-
 # Bundler
 
 # Rails 
