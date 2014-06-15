@@ -39,10 +39,6 @@ echo; echo ">> Installing Emacs..."
 sudo apt-get install -y software-properties-common python-software-properties && 
 sudo add-apt-repository ppa:cassou/emacs && sudo apt-get update && sudo apt-get install -y emacs24 &&
 
-# Emacs Live
-echo; echo ">> Installing Emacs-Live..."
-bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh) &&
-
 # Git 
 echo; echo ">> Installing Git..."
 sudo apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev &&
@@ -50,8 +46,6 @@ sudo apt-get -y install git &&
 
 # Java 
 echo; echo ">> Installing Java..."
-# sudo apt-get update &&
-# sudo apt-key update
 sudo apt-get -y install python-software-properties &&
 sudo add-apt-repository -y ppa:webupd8team/java &&
 sudo apt-get update &&
@@ -64,11 +58,14 @@ wget -O ~/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein 
 chmod u+x ~/bin/lein &&
 ~/bin/lein
 
+# Emacs Live
+echo; echo ">> Installing Emacs-Live..."
+bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh) &&
+
 # Configurations
 echo; echo ">> Setting Configurations..."
 mv .bashrc{,.1}
-#mv .bash_profile{,.1}
-#mv .live-packs/$(echo $USER)-pack/init.el{,.1}  # backup old configs
+mv .live-packs/$(echo $USER)-pack/init.el{,.1}  # backup old configs
 mkdir -p Projects &&
 git clone https://github.com/twashing/configurations.git Projects/configurations &&
 ln -s ~/Projects/configurations/bash_profile ~/.bash_profile &&
