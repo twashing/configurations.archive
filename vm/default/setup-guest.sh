@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-function create-user() {
-}
+#function create-user() {
+#}
 
 # Change to Root
 echo; echo ">> Creating New User (as root)..."
