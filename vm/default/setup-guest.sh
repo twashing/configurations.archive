@@ -1,19 +1,34 @@
 #!/bin/bash
 
 
+function create-user() {
+
+  # New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
+  echo -n "Please supply a username: "
+  read line
+  adduser --disabled-password --gecos "" $line
+
+  passwd $line
+  chown $line:users "/home/$line"
+
+  local  myresult='some value'
+  echo "$line"
+}
+
 # Change to Root
-echo; echo ">> Changing to Root..."
-sudo su - << 'EOF'
+echo; echo ">> Creating New User (as root)..."
+sudo su - -c create-user
+#sudo su - << 'EOF'
 
 # New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
-echo; echo ">> Creating New User..."
-echo -n "Please supply a username: "
-read line
-adduser --disabled-password --gecos "" $line
 
-passwd $line
-chown $line:users "/home/$line"
-EOF
+#echo -n "Please supply a username: "
+#read line
+#adduser --disabled-password --gecos "" $line
+
+#passwd $line
+#chown $line:users "/home/$line"
+#EOF
 
 # Change to New User 
 sudo su - $line
