@@ -2,22 +2,11 @@
 
 
 function create-user() {
-
-  # New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
-  echo -n "Please supply a username: "
-  read line
-  adduser --disabled-password --gecos "" $line
-
-  passwd $line
-  chown $line:users "/home/$line"
-
-  local  myresult='some value'
-  echo "$line"
 }
 
 # Change to Root
 echo; echo ">> Creating New User (as root)..."
-sudo su - -c create-user
+sudo su - -c bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/vm/default/setup-add-user.sh)
 #sudo su - << 'EOF'
 
 # New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
@@ -31,7 +20,7 @@ sudo su - -c create-user
 #EOF
 
 # Change to New User 
-sudo su - $line
+#sudo su - $line
 
 # Update Tools
 echo; echo ">> Updating Apt-Get listings..."
