@@ -3,7 +3,7 @@
 
 # Change to Root
 echo; echo ">> Changing to Root..."
-sudo su - 
+sudo su - << 'EOF'
 
 # New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
 echo; echo ">> Creating New User..."
@@ -13,6 +13,7 @@ adduser --disabled-password --gecos "" $line
 
 passwd $line
 chown $line:users "/home/$line"
+EOF
 
 # Change to New User 
 sudo su - $line
