@@ -65,6 +65,7 @@ chmod u+x ~/bin/lein &&
 # Configurations
 echo; echo ">> Setting Configurations..."
 mv .bashrc{,.1}
+mv .bash_profile{,.1}
 mv .live-packs/$(echo $USER)-pack/init.el{,.1}  # backup old configs
 mkdir -p Projects &&
 git clone https://github.com/twashing/configurations.git Projects/configurations &&
