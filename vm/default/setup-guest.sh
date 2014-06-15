@@ -5,8 +5,8 @@
 #}
 
 # Change to Root
-echo; echo ">> Creating New User (as root)..."
-sudo su - -c bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/vm/default/setup-add-user.sh)
+#echo; echo ">> Creating New User (as root)..."
+#sudo su - -c bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/vm/default/setup-add-user.sh)
 #sudo su - << 'EOF'
 
 # New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
