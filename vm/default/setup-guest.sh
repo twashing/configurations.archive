@@ -1,12 +1,34 @@
 #!/bin/bash
 
 
+#function create-user() {
+#}
+
+# Change to Root
+#echo; echo ">> Creating New User (as root)..."
+#sudo su - -c bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/vm/default/setup-add-user.sh)
+#sudo su - << 'EOF'
+
+# New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
+
+#echo -n "Please supply a username: "
+#read line
+#adduser --disabled-password --gecos "" $line
+
+#passwd $line
+#chown $line:users "/home/$line"
+#EOF
+
+# Change to New User 
+#sudo su - $line
+
+# Update Tools
 echo; echo ">> Updating Apt-Get listings..."
 sudo apt-get update && 
 
 # Tools 
 echo; echo ">> Installing General Tools..."
-sudo apt-get -y install tree tmux build-essential &&
+sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev &&
 
 # Vim 
 echo; echo ">> Installing Vim..."
@@ -16,10 +38,6 @@ sudo apt-get install -y vim-nox &&
 echo; echo ">> Installing Emacs..."
 sudo apt-get install -y software-properties-common python-software-properties && 
 sudo add-apt-repository ppa:cassou/emacs && sudo apt-get update && sudo apt-get install -y emacs24 &&
-
-# Emacs Live
-echo; echo ">> Installing Emacs-Live..."
-bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh) &&
 
 # Git 
 echo; echo ">> Installing Git..."
@@ -35,12 +53,19 @@ sudo apt-get -y install oracle-java7-installer &&
 
 # Leiningen
 echo; echo ">> Installing Leiningen..."
-mkdir ~/bin &&
+mkdir ~/bin   # may already exist
 wget -O ~/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein &&
 chmod u+x ~/bin/lein &&
+~/bin/lein
+
+# Emacs Live
+echo; echo ">> Installing Emacs-Live..."
+bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh) &&
 
 # Configurations
 echo; echo ">> Setting Configurations..."
+mv .bashrc{,.1}
+mv .live-packs/$(echo $USER)-pack/init.el{,.1}  # backup old configs
 mkdir -p Projects &&
 git clone https://github.com/twashing/configurations.git Projects/configurations &&
 ln -s ~/Projects/configurations/bash_profile ~/.bash_profile &&
@@ -68,8 +93,6 @@ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_local &&
 echo 'eval "$(rbenv init -)"' >> ~/.bash_local &&
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &&
 ~/.rbenv/bin/rbenv install 2.1.2 &&
-
-# Gem 
 
 # Bundler
 

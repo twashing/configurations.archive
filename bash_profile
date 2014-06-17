@@ -38,9 +38,12 @@ export NODE_PATH=$HOME/local/node:$HOME/local/node/lib/node_modules
 
 
 alias em="emacs"
+alias ec="emacsclient"
+alias emacsc="emacsclient"
 alias ll="ls -la --color"
 alias llc="ls -l --color"
 alias lsc="ls -aG --color"
+alias cls="clear"
 alias gk="g bk"
 alias gkp="g bkp"
 alias gnn="g nn"
@@ -55,8 +58,6 @@ alias ebashp="vim ~/.bash_profile"
 alias evimrc="vim ~/.vimrc"
 alias lrepl="lein repl"
 alias rf="rm -rf"
-alias hr="heroku"
-alias emacsc="emacsclient"
 
 #function sea { apt-cache search $1 | grep -C 500 $1; }
 #alias sea2="sea --names-only"
