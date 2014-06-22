@@ -1,26 +1,20 @@
 #!/bin/bash
 
+sudo apt-get update && 
 
-#function create-user() {
-#}
+# Create New User
+script_create_user=$(cat <<'EOF'
+adduser --disabled-password --gecos "" $0
+passwd $0
+chown $0:users "/home/$0"
+EOF
+)
 
-# Change to Root
-#echo; echo ">> Creating New User (as root)..."
-#sudo su - -c bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/vm/default/setup-add-user.sh)
-#sudo su - << 'EOF'
+echo; echo ">> Creating New User (as root)..."
+echo -n "Please supply a username: "
+read line
+sudo sh -c "$script_create_user" $line
 
-# New User (see here: https://www.debian-administration.org/article/2/Adding_new_users)
-
-#echo -n "Please supply a username: "
-#read line
-#adduser --disabled-password --gecos "" $line
-
-#passwd $line
-#chown $line:users "/home/$line"
-#EOF
-
-# Change to New User 
-#sudo su - $line
 
 # Update Tools
 echo; echo ">> Updating Apt-Get listings..."
@@ -28,7 +22,7 @@ sudo apt-get update &&
 
 # Tools 
 echo; echo ">> Installing General Tools..."
-sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev &&
+sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev gnustep-base-runtime gnupg gnupg-agent &&
 
 # Vim 
 echo; echo ">> Installing Vim..."
@@ -50,30 +44,6 @@ sudo apt-get -y install python-software-properties &&
 sudo add-apt-repository -y ppa:webupd8team/java &&
 sudo apt-get update &&
 sudo apt-get -y install oracle-java7-installer &&
-
-# Leiningen
-echo; echo ">> Installing Leiningen..."
-mkdir ~/bin   # may already exist
-wget -O ~/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein &&
-chmod u+x ~/bin/lein &&
-~/bin/lein
-
-# Emacs Live
-echo; echo ">> Installing Emacs-Live..."
-bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh) &&
-
-# Configurations
-echo; echo ">> Setting Configurations..."
-mv .bashrc{,.1}
-mv .live-packs/$(echo $USER)-pack/init.el{,.1}  # backup old configs
-mkdir -p Projects &&
-git clone https://github.com/twashing/configurations.git Projects/configurations &&
-ln -s ~/Projects/configurations/bash_profile ~/.bash_profile &&
-ln -s ~/Projects/configurations/bashrc ~/.bashrc &&
-ln -s ~/Projects/configurations/init.el ~/.live-packs/$(echo $USER)-pack/init.el &&
-ln -s ~/Projects/configurations/lein_profiles.clj ~/.lein/profiles.clj &&
-ln -s ~/Projects/configurations/tmux.conf ~/.tmux.conf &&
-ln -s ~/Projects/configurations/vimrc ~/.vimrc &&
 
 # Backup old ruby lib & uninstall 
 echo; echo ">> Backing up old ruby libs & uninstall..."
@@ -98,8 +68,42 @@ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-bu
 
 # Rails 
 
+# Local install 
+sudo su - $line << 'EOF'
+
+echo ">> Runnin local config as[ $(whoami) ]"
+
+# Leiningen
+echo; echo ">> Installing Leiningen..."
+mkdir ~/bin   # may already exist
+wget -O ~/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein &&
+chmod u+x ~/bin/lein &&
+~/bin/lein
+
+# Configurations
+echo; echo ">> Setting Configurations..."
+mv ~/.bashrc{,.1}
+mkdir -p ~/Projects &&
+
+git clone https://github.com/twashing/configurations.git ~/Projects/configurations &&
+ln -s ~/Projects/configurations/bash_profile ~/.bash_profile &&
+ln -s ~/Projects/configurations/bashrc ~/.bashrc &&
+ln -s ~/Projects/configurations/lein_profiles.clj ~/.lein/profiles.clj &&
+ln -s ~/Projects/configurations/tmux.conf ~/.tmux.conf &&
+ln -s ~/Projects/configurations/vimrc ~/.vimrc &&
 
 echo 'export PATH="$PATH:~/bin/"' >> ~/.bash_local &&
 chmod +x ~/.bash_local &&
 ~/.bash_local
 
+EOF
+
+# Emacs Live - do manually; the emacs-live shell is interactive, meaning we have to have a standard input available
+#echo; echo ">> Installing Emacs-Live..."
+
+#wget https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh &&
+#chmod u+x install-emacs-live.sh
+#./install-emacs-live.sh
+
+#mv ~/.live-packs/ten-pack/init.el{,.1}
+#ln -s ~/Projects/configurations/init.el ~/.live-packs/ten-pack/init.el
