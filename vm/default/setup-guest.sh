@@ -98,6 +98,13 @@ chmod +x ~/.bash_local &&
 
 EOF
 
+# Leiningen GPG Authentication
+# https://github.com/technomancy/leiningen/blob/master/doc/DEPLOY.md#authentication
+
+# Invoking gpg-agent 
+# https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html 
+
+
 # Emacs Live - do manually; the emacs-live shell is interactive, meaning we have to have a standard input available
 #echo; echo ">> Installing Emacs-Live..."
 
