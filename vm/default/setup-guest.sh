@@ -98,6 +98,11 @@ chmod +x ~/.bash_local &&
 
 EOF
 
+# Setup Gnupg Keys
+
+# Setup SSH Keys
+
+
 # Emacs Live - do manually; the emacs-live shell is interactive, meaning we have to have a standard input available
 #echo; echo ">> Installing Emacs-Live..."
 
