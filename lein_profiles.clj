@@ -1,10 +1,10 @@
 {:user
  {:plugins [[lein-ancient "0.5.5"]
-            [codox "0.8.8"]
+            [codox "0.8.10"]
             [lein-ritz "0.7.0"]
             [lein-midje "3.1.3"]
             [lein-midje-doc "0.0.22"]
-            [lein-ring "0.8.10"]
+            [lein-ring "0.8.11"]
             [lein-try "0.4.1"]
             [lein-localrepo "0.5.3"]
             [alembic "0.2.1"]
