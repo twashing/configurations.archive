@@ -17,6 +17,17 @@
 
 (global-set-key (kbd "C-c r") 'cider-repl-reset)
 
+
+(defun cider-project-refresh ()
+  (interactive)
+  (save-some-buffers)
+  (with-current-buffer (cider-current-repl-buffer)
+    (goto-char (point-max))
+    (insert "(user/reload-project)")
+    (cider-repl-return)))
+
+(global-set-key (kbd "C-c M-r") 'cider-project-refresh)
+
 (defun kill-other-buffers ()
   "Kill all other buffers."
   (interactive)
