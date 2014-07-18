@@ -1,43 +1,33 @@
 
 set nocompatible
 
-":function! VimClojureCheck()
-":   if filereadable("~/.vim/syntax/clojure.vim")
-":       
-":       echo "~/.vim/syntax/clojure.vim exists... loading"
-":       source ~/.vim/syntax/clojure.vim
-":
-":       let g:clj_highlight_builtins=1 
-":       let g:clj_paren_rainbow=1
-":   endif
-":endfunction
-"
-":function! VundleCheck()
-":   "if filereadable("SpecificFile")
-":       echo "SpecificFile exists"
-":
-":       let g:Powerline_symbols = 'fancy'
-":       call vundle#rc()
-":
-":       " Bundle 'gmarik/vundle'
-":       " Bundle 'Lokaltog/vim-powerline'
-":   "endif
-":endfunction
-"
-"
-":call VimClojureCheck()
-":call VundleCheck()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+Plugin 'gmarik/Vundle.vim'    " let Vundle manage Vundle, required
+Plugin 'bling/vim-airline'
+Plugin 'altercation/solarized'
+Plugin 'altercation/vim-colors-solarized'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+"filetype plugin indent on    " required
 " installing tweaks from 'http://stevelosh.com/blog/2010/09/coming-home-to-vim/#pathogen'
 filetype off
 filetype plugin indent on
 
 
-syntax on
+" For solarized plugin (color scheme)
+" https://github.com/altercation/vim-colors-solarized
+" syntax on
+syntax enable
+set background=light
+colorscheme solarized
+
+
 set modelines=0
 set ai
-set rtp+=~/.vim/bundle/vundle/
 
 
 " some general stuff 

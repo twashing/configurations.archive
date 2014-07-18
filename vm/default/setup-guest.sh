@@ -28,6 +28,9 @@ sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadl
 echo; echo ">> Installing Vim..."
 sudo apt-get install -y vim-nox &&
 
+# TODO ... Vundle
+# TODO ... vim-airline
+
 # Emacs (https://launchpad.net/~cassou/+archive/emacs)
 echo; echo ">> Installing Emacs..."
 sudo apt-get install -y software-properties-common python-software-properties && 
