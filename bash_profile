@@ -13,6 +13,9 @@ function ubuntu-version {
 function ubuntu-packages {
   dpkg --get-selections | grep -v deinstall
 }
+function git-log-tree {
+  git log --all --graph --decorate --oneline --simplify-by-decoration
+}
 
 set -o emacs
 
