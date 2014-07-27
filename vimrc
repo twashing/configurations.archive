@@ -18,11 +18,13 @@ filetype off
 filetype plugin indent on
 
 
+let g:solarized_termcolors=256
+
 " For solarized plugin (color scheme)
 " https://github.com/altercation/vim-colors-solarized
 " syntax on
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 
 
