@@ -34,3 +34,20 @@
   (mapc 'kill-buffer
         (delq (current-buffer)
               (remove-if-not 'buffer-file-name (buffer-list)))))
+
+;; taken from cemerick's gist: https://gist.github.com/cemerick/6865761
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (font-lock-remove-keywords
+             nil `(("(\\(fn\\)[\[[:space:]]"
+                    (0 (progn (compose-region (match-beginning 1)
+                                              (match-end 1) "λ")
+                              nil)))
+                   ("\\(#\\)("
+                    (0 (progn (compose-region (match-beginning 1)
+                                              (match-end 1) "ƒ")
+                              nil)))
+                   ("\\(#\\){"
+                    (0 (progn (compose-region (match-beginning 1)
+                                              (match-end 1) "∈")
+                              nil)))))))
