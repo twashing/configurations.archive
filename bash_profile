@@ -61,6 +61,8 @@ alias ebashp="vim ~/.bash_profile"
 alias evimrc="vim ~/.vimrc"
 alias lrepl="lein repl"
 alias rf="rm -rf"
+alias gdif="git diff --name-only"
+alias gdiff="git diff"
 
 #function sea { apt-cache search $1 | grep -C 500 $1; }
 #alias sea2="sea --names-only"
