@@ -1,4 +1,3 @@
-
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
@@ -63,6 +62,8 @@ alias lrepl="lein repl"
 alias rf="rm -rf"
 alias gdif="git diff --name-only"
 alias gdiff="git diff"
+alias gtree='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
+alias pinentry="pinentry-curses"
 
 #function sea { apt-cache search $1 | grep -C 500 $1; }
 #alias sea2="sea --names-only"
@@ -83,10 +84,53 @@ alias gdiff="git diff"
 # git reset --hard HEAD
 # git reset HEAD somefile.txt
 
-emacs --daemon > /dev/null 2>&1 &
-
 
 if [ -f ~/.bash_local ]; then
   . ~/.bash_local
 fi
 
+emacs --daemon > /dev/null 2>&1 &
+
+#gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
+#if [ -f "${HOME}/.gpg-agent-info" ]; then
+#  . "${HOME}/.gpg-agent-info"
+#  export GPG_AGENT_INFO
+#  export SSH_AUTH_SOCK
+#fi
+#
+#GPG_TTY=$(tty)
+#export GPG_TTY
+
+
+# Invoke GnuPG-Agent the first time we login.
+# Does `~/.gpg-agent-info' exist and points to gpg-agent process accepting signals?
+#if test -f $HOME/.gpg-agent-info && \
+#    kill -0 `cut -d: -f 2 $HOME/.gpg-agent-info` 2>/dev/null; then
+#    GPG_AGENT_INFO=`cat $HOME/.gpg-agent-info | cut -c 16-`
+#else
+#    # No, gpg-agent not available; start gpg-agent
+#    eval `gpg-agent --daemon --no-grab --write-env-file $HOME/.gpg-agent-info`
+#fi
+#export GPG_TTY=`tty`
+#export GPG_AGENT_INFO
+
+
+# Invoke GnuPG-Agent the first time we login.
+# Does `.gpg-agent-info' exist and points to a gpg-agent process accepting signals?
+if [ -f $HOME/.gpg-agent-info ] && \
+    kill -0 $(cut -d: -f 2 $HOME/.gpg-agent-info) 2>/dev/null
+then
+    # Yes, `.gpg-agent.info' points to valid gpg-agent process;
+        # Indicate gpg-agent process
+    GPG_AGENT_INFO=$(cat $HOME/.gpg-agent-info | cut -c 16-)
+else
+    # No, no valid gpg-agent process available;
+        # Start gpg-agent
+    eval $(gpg-agent --daemon --no-grab --write-env-file $HOME/.gpg-agent-info)
+fi
+export GPG_TTY=$(tty)
+export GPG_AGENT_INFO
+
+mkcd () {
+     mkdir -p "$1" && cd "$1"
+}

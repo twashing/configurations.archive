@@ -6,6 +6,10 @@
 ;; Load bindings config
 (live-load-config-file "bindings.el")
 
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
 
 (defun cider-repl-reset ()
   (interactive)
@@ -23,7 +27,7 @@
   (save-some-buffers)
   (with-current-buffer (cider-current-repl-buffer)
     (goto-char (point-max))
-    (insert "(user/reload-project)")
+    (insert "(reload-project)")
     (cider-repl-return)))
 
 (global-set-key (kbd "C-c M-r") 'cider-project-refresh)
@@ -51,3 +55,5 @@
                     (0 (progn (compose-region (match-beginning 1)
                                               (match-end 1) "∈")
                               nil)))))))
+
+(add-to-list 'exec-path "/home/twashing/bin")
