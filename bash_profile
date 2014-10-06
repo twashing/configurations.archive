@@ -65,6 +65,10 @@ alias gdiff="git diff"
 alias gtree='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
 alias pinentry="pinentry-curses"
 
+# what service are running on which ports 
+alias services_on_port="lsof -Pnl +M -i4"
+
+
 #function sea { apt-cache search $1 | grep -C 500 $1; }
 #alias sea2="sea --names-only"
 #function ins { sudo apt-get install -y $* && aptn "Installed $@" }
@@ -131,6 +135,7 @@ fi
 export GPG_TTY=$(tty)
 export GPG_AGENT_INFO
 
+# taken from: https://twitter.com/_komaz/status/514628905576460288
 mkcd () {
      mkdir -p "$1" && cd "$1"
 }
