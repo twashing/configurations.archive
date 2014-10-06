@@ -66,7 +66,7 @@ alias gtree='git log --graph --full-history --all --color --pretty=format:"%x1b[
 alias pinentry="pinentry-curses"
 
 # what service are running on which ports 
-alias services_on_port="lsof -Pnl +M -i4"
+alias services_on_ports="lsof -Pnl +M -i4"
 
 
 #function sea { apt-cache search $1 | grep -C 500 $1; }
