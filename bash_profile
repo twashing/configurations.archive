@@ -136,6 +136,11 @@ export GPG_TTY=$(tty)
 export GPG_AGENT_INFO
 
 # taken from: https://twitter.com/_komaz/status/514628905576460288
-mkcd () {
+function mkcd () {
      mkdir -p "$1" && cd "$1"
 }
+
+# taken from: http://cfenollosa.com/misc/tricks.txt
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+function fname() { find . -iname "*$@*"; }
+

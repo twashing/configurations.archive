@@ -11,12 +11,23 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+(require 'multiple-cursors)
+
+
+;; From: https://github.com/clojure-emacs/cider
+;; disable auto-selection of the error buffer when it's displayed
+(setq cider-auto-select-error-buffer nil)
+(setq cider-repl-result-prefix "")
+(global-company-mode)
+(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+
+
 (defun cider-repl-reset ()
   (interactive)
   (save-some-buffers)
   (with-current-buffer (cider-current-repl-buffer)
     (goto-char (point-max))
-    (insert "(user/reset)")
+    (insert "(reset)")
     (cider-repl-return)))
 
 (global-set-key (kbd "C-c r") 'cider-repl-reset)
