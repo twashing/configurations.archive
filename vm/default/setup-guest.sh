@@ -12,8 +12,8 @@ EOF
 
 echo; echo ">> Creating New User (as root)..."
 echo -n "Please supply a username: "
-read line
-sudo sh -c "$script_create_user" $line
+read username
+sudo sh -c "$script_create_user" $username
 
 
 # Update Tools
@@ -23,6 +23,7 @@ sudo apt-get update &&
 # Tools 
 echo; echo ">> Installing General Tools..."
 sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev gnustep-base-runtime gnupg gnupg-agent &&
+
 
 # Vim 
 echo; echo ">> Installing Vim..."
@@ -59,20 +60,24 @@ sudo apt-get -y purge ruby &&
 sudo apt-get -y purge ruby-bundler && 
 sudo apt-get -y autoremove --purge
 
+# Local install 
+sudo su - $username << 'EOF'
+
 # Install RBenv / Ruby-Build
 echo; echo ">> Installing Rbenv (Ruby)..."
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv &&
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_local &&
 echo 'eval "$(rbenv init -)"' >> ~/.bash_local &&
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &&
-~/.rbenv/bin/rbenv install 2.1.2 &&
+~/.rbenv/bin/rbenv install 2.1.5 &&
+. .bash_local &&
+rbenv global 2.1.5 &&
 
 # Bundler
+gem install bundler
 
 # Rails 
-
-# Local install 
-sudo su - $line << 'EOF'
+gem install rails
 
 echo ">> Runnin local config as[ $(whoami) ]"
 
