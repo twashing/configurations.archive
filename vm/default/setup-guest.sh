@@ -22,7 +22,7 @@ sudo apt-get update &&
 
 # Tools 
 echo; echo ">> Installing General Tools..."
-sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev gnustep-base-runtime gnupg gnupg-agent &&
+sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev gnustep-base-runtime gnupg gnupg-agent unzip &&
 
 
 # Vim 
@@ -59,6 +59,12 @@ sudo apt-get -y purge ruby1.8 &&
 sudo apt-get -y purge ruby && 
 sudo apt-get -y purge ruby-bundler && 
 sudo apt-get -y autoremove --purge
+
+# Node & NPM
+sudo apt-get install nodejs npm &&
+
+# ** TODO - remove this rails dependency
+sudo apt-get install libsqlite3-dev &&
 
 # Local install 
 sudo su - $username << 'EOF'
@@ -109,6 +115,9 @@ EOF
 # Setup Gnupg Keys
 
 # Setup SSH Keys
+
+# Add $username to SUDOers file
+# Add Rails-Pack, with Rinari (https://github.com/cap10morgan/rails-pack)
 
 # Leiningen GPG Authentication
 # https://github.com/technomancy/leiningen/blob/master/doc/DEPLOY.md#authentication
