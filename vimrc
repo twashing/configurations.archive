@@ -2,16 +2,16 @@
 set nocompatible
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'    " let Vundle manage Vundle, required
-Plugin 'bling/vim-airline'
-Plugin 'altercation/solarized'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'gmarik/Vundle.vim'    " let Vundle manage Vundle, required
+"Plugin 'bling/vim-airline'
+"Plugin 'altercation/solarized'
+"Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+"call vundle#end()            " required
 "filetype plugin indent on    " required
 " installing tweaks from 'http://stevelosh.com/blog/2010/09/coming-home-to-vim/#pathogen'
 filetype off
