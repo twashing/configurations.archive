@@ -22,7 +22,7 @@ sudo apt-get update &&
 
 # Tools 
 echo; echo ">> Installing General Tools..."
-sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev gnustep-base-runtime gnupg gnupg-agent unzip &&
+sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev gnustep-base-runtime gnupg gnupg-agent unzip autoconf libgmp3-dev libncurses5-dev &&
 
 
 # Vim 
