@@ -20,7 +20,7 @@
 ;; disable auto-selection of the error buffer when it's displayed
 (setq cider-auto-select-error-buffer nil)
 (setq cider-repl-result-prefix "")
-(global-company-mode)
+;; (global-company-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 (defun cider-repl-reset ()
@@ -160,3 +160,10 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>")    'windmove-up)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
+
+(defun coffee-custom ()
+  "coffee-mode-hook"
+  (make-local-variable 'tab-width)
+  (set 'tab-width 2))
+
+(add-hook 'coffee-mode-hook 'coffee-custom)

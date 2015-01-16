@@ -8,9 +8,11 @@
             [lein-try "0.4.1"]
             [lein-localrepo "0.5.3"]
             [alembic "0.2.1"]
-            [cider/cider-nrepl "0.7.0"]
+            [cider/cider-nrepl "0.8.1"]
             [lein-cljsbuild "1.0.3"]
-            [lein-clojars "0.9.1"]]
+            [lein-clojars "0.9.1"]
+            [lein-auto "0.1.1"]
+            [lein-shell "0.4.0"]]
 
   :dependencies [[org.clojure/tools.namespace "0.2.7"]
                  [im.chit/vinyasa "0.2.2"]
