@@ -42,13 +42,6 @@ echo; echo ">> Installing Git..."
 sudo apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev &&
 sudo apt-get -y install git &&
 
-# Java 
-echo; echo ">> Installing Java..."
-sudo apt-get -y install python-software-properties &&
-sudo add-apt-repository -y ppa:webupd8team/java &&
-sudo apt-get update &&
-sudo apt-get -y install oracle-java7-installer &&
-
 # Add user to SUDOers
 sudo adduser $username sudo
 
@@ -56,13 +49,6 @@ sudo adduser $username sudo
 sudo su - $username << 'EOF'
 
 echo ">> Runnin local config as[ $(whoami) ]"
-
-# Leiningen
-echo; echo ">> Installing Leiningen..."
-mkdir ~/bin   # may already exist
-wget -O ~/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein &&
-chmod u+x ~/bin/lein &&
-~/bin/lein
 
 # Configurations
 echo; echo ">> Setting Configurations..."
@@ -72,7 +58,6 @@ mkdir -p ~/Projects &&
 git clone https://github.com/twashing/configurations.git ~/Projects/configurations &&
 ln -s ~/Projects/configurations/bash_profile ~/.bash_profile &&
 ln -s ~/Projects/configurations/bashrc ~/.bashrc &&
-ln -s ~/Projects/configurations/lein_profiles.clj ~/.lein/profiles.clj &&
 ln -s ~/Projects/configurations/tmux.conf ~/.tmux.conf &&
 ln -s ~/Projects/configurations/vimrc ~/.vimrc &&
 
