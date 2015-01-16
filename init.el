@@ -20,7 +20,7 @@
 ;; disable auto-selection of the error buffer when it's displayed
 (setq cider-auto-select-error-buffer nil)
 (setq cider-repl-result-prefix "")
-(global-company-mode)
+;; (global-company-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 (defun cider-repl-reset ()
