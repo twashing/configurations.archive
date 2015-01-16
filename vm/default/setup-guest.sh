@@ -49,9 +49,8 @@ sudo add-apt-repository -y ppa:webupd8team/java &&
 sudo apt-get update &&
 sudo apt-get -y install oracle-java7-installer &&
 
-# Node & NPM
-sudo apt-get install nodejs npm &&
-sudo npm install -g yo grunt grunt-cli bower
+# Add user to SUDOers
+sudo adduser $username sudo
 
 # Local install 
 sudo su - $username << 'EOF'
