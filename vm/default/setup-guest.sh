@@ -94,3 +94,10 @@ EOF
 
 #mv ~/.live-packs/ten-pack/init.el{,.1}
 #ln -s ~/Projects/configurations/init.el ~/.live-packs/ten-pack/init.el
+
+# turn off Floobits in emacs live (see .emacs.d/packs/stable/power-pack/init.el)
+
+# eliminate vagrant warning "Warning: Authentication failure. Retrying":
+# http://stackoverflow.com/questions/24867490/coreos-authentication-failure-on-vagrant-up
+
+
