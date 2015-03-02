@@ -42,6 +42,9 @@ export NODE_PATH=$HOME/local/node:$HOME/local/node/lib/node_modules
 alias em="emacs"
 alias ec="emacsclient"
 alias emacsc="emacsclient"
+
+# take from here: https://twitter.com/puffnfresh/status/568439637846261760
+alias et="em -q --eval '(setq user-emacs-directory \"~/.emacs.1/\")' --eval '(load-file \"~/.emacs.1/init.el\")'"
 alias ll="ls -la --color"
 alias llc="ls -l --color"
 alias lsc="ls -aG --color"
