@@ -26,25 +26,26 @@ export CLOJURESCRIPT_HOME="$PROJECTS_HOME/bkell/vendor/clojurescript"
 export PATH="$PATH:\
 ~/bin/:\
 ~/.cask/bin:\
+~/.cabal/bin:\
 ~/Downloads/vmware-server-distrib/bin/:\
 $JAVA_HOME/bin:\
 $JRE_HOME/bin:\
 $PROJECTS_HOME/vimclojure-nailgun-client/:\
 $CLOJURESCRIPT_HOME/bin:\
 $CLOJURESCRIPT_HOME/script:\
-$HOME/local/node/bin:\
 /opt/adt-bundle-linux-x86_64-20131030/sdk/platform-tools:\
 /opt/adt-bundle-linux-x86_64-20131030/sdk/tools"
 
-export NODE_PATH=$HOME/local/node:$HOME/local/node/lib/node_modules
+export NODE_PATH=".:\
+~/Tools/node-v0.12.0-linux-x86/bin"
 
 
 alias em="emacs"
 alias ec="emacsclient"
 alias emacsc="emacsclient"
 
+
 # take from here: https://twitter.com/puffnfresh/status/568439637846261760
-alias et="em -q --eval '(setq user-emacs-directory \"~/.emacs.1/\")' --eval '(load-file \"~/.emacs.1/init.el\")'"
 alias ll="ls -la --color"
 alias llc="ls -l --color"
 alias lsc="ls -aG --color"
