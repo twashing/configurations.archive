@@ -40,9 +40,6 @@ $CLOJURESCRIPT_HOME/script:\
 
 
 
-~/Tools/node-v0.12.0-linux-x86/bin"
-
-
 alias em="emacs"
 alias ec="emacsclient"
 alias emacsc="emacsclient"
