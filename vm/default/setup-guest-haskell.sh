@@ -28,3 +28,6 @@ cd cabal-install-1.22.0.0/
 ./bootstrap.sh
 cabal update
 
+
+# ghc-mod
+cabal install ghc-mod
