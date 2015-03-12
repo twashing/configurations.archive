@@ -21,7 +21,6 @@ ghc -threaded --make Setup
 ./Setup build
 sudo ./Setup install
 
-
 cd ~/Tools/
 get https://www.haskell.org/cabal/release/cabal-install-1.22.0.0/cabal-install-1.22.0.0.tar.gz
 tar xvzf cabal-install-1.22.0.0.tar.gz

@@ -20,6 +20,7 @@ set -o emacs
 
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
+export SCALA_HOME="~/Tools/scala-2.11.6"
 #export JRE_HOME="/usr/lib/jvm/jdk1.7.0_25/jre"
 export PROJECTS_HOME="~/Projects"
 export CLOJURESCRIPT_HOME="$PROJECTS_HOME/bkell/vendor/clojurescript"
@@ -30,13 +31,15 @@ export PATH="$PATH:\
 ~/Downloads/vmware-server-distrib/bin/:\
 $JAVA_HOME/bin:\
 $JRE_HOME/bin:\
+$SCALA_HOME/bin:\
 $PROJECTS_HOME/vimclojure-nailgun-client/:\
 $CLOJURESCRIPT_HOME/bin:\
 $CLOJURESCRIPT_HOME/script:\
 /opt/adt-bundle-linux-x86_64-20131030/sdk/platform-tools:\
 /opt/adt-bundle-linux-x86_64-20131030/sdk/tools"
 
-export NODE_PATH=".:\
+
+
 ~/Tools/node-v0.12.0-linux-x86/bin"
 
 
