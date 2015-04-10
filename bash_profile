@@ -18,7 +18,7 @@ function git-log-tree {
 
 set -o emacs
 
-export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
 export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
 export SCALA_HOME="~/Tools/scala-2.11.6"
 #export JRE_HOME="/usr/lib/jvm/jdk1.7.0_25/jre"
@@ -43,6 +43,7 @@ $CLOJURESCRIPT_HOME/script:\
 alias em="emacs"
 alias ec="emacsclient"
 alias emacsc="emacsclient"
+alias emd="cd ~/.emacs.d"
 
 
 # take from here: https://twitter.com/puffnfresh/status/568439637846261760
