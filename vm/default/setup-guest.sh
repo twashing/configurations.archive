@@ -42,6 +42,15 @@ echo; echo ">> Installing Git..."
 sudo apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev &&
 sudo apt-get -y install git &&
 
+echo -n "What's your git name: "
+read gitname
+
+echo -n "What's your git email: "
+read gitemail
+
+git config --global user.name $gitname
+git config --global user.email $gitemail
+
 # Add user to SUDOers
 sudo adduser $username sudo
 

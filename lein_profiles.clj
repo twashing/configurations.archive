@@ -1,5 +1,6 @@
 {:user {:plugins [[cider/cider-nrepl "0.9.0-SNAPSHOT"]
                   [venantius/ultra "0.3.2"]
+                  [refactor-nrepl "1.0.1"]
                   ;;[lein-ancient "0.5.5"]
                   ;;[codox "0.8.10"]
                   ;;[lein-ritz "0.7.0"]
