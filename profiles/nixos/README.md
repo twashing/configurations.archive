@@ -1,17 +1,17 @@
 # Configurations
 
-My dot and configuration files
+Setup for a [NixOS](nixos.org) machine.
 
 ## Virtual Machine 
 
 To setup a VM from the vm/default  configuration, you should do the following
 
-- download and install Vagrant
-- run `git clone https://github.com/twashing/configurations.git` then cd into `vm/default`
-- run `./setup-host.sh`
+- run `vagrant init larryweya/nixos-14.12_64`  # (https://vagrantcloud.com/larryweya/boxes/nixos-14.12_64)
+- run `vagrant up && vagrant ssh`
+
 - ***You should now be in the virtual machine***
-- run `sudo apt-get -y install curl`
-- run `bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/vm/default/setup-guest.sh)` ;; this will have a few prompts for Java 
+- run `nix-env -i vim`
+- run `bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/profiles/ubuntu-server/vm/default/setup-guest.sh)` 
 
 
 ## License
