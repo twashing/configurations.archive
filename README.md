@@ -10,8 +10,8 @@ To setup a VM from the vm/default  configuration, you should do the following
 - run `git clone https://github.com/twashing/configurations.git` 
 
 From here, consult each profile's setup manual
-- [nixos](profiles/nixos/README.md)
-- [ubuntu-server](profiles/ubuntu-server/README.md)
+- [nixos](profiles/nixos/)
+- [ubuntu-server](profiles/ubuntu-server/)
 
 
 ## License

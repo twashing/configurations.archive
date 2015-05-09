@@ -1,4 +1,12 @@
-#!/bin/bash
+
+if [ -z "$USERNAME" ]; then
+  echo -n "Please supply a username: "
+  read username
+  export USERNAME=$username
+fi
+
+# Local install 
+sudo su - $USERNAME << 'EOF'
 
 echo -n "What's your git name: "
 read gitname
@@ -12,21 +20,21 @@ git config --global user.email $gitemail
 # Add user to SUDOers
 sudo adduser $username sudo
 
-# Local install 
-sudo su - $username << 'EOF'
-
-echo ">> Runnin local config as[ $(whoami) ]"
+echo ">> Runnin local config as[ $USER ]"
 
 # Configurations
 echo; echo ">> Setting Configurations..."
-mv ~/.bashrc{,.1}
+if [ -f ~/.bashrc ]; then
+	mv ~/.bashrc{,.1}
+fi
+
 mkdir -p ~/Projects &&
 
-git clone https://github.com/twashing/configurations.git ~/Projects/configurations &&
-ln -s ~/Projects/configurations/profiles/core/bash_profile ~/.bash_profile &&
-ln -s ~/Projects/configurations/profiles/core/bashrc ~/.bashrc &&
-ln -s ~/Projects/configurations/profiles/core/tmux.conf ~/.tmux.conf &&
-ln -s ~/Projects/configurations/profiles/core/vimrc ~/.vimrc &&
+# git clone https://github.com/twashing/configurations.git ~/Projects/configurations &&
+ln -s ~/Projects/configurations/profiles/core/etc/bash_profile ~/.bash_profile &&
+ln -s ~/Projects/configurations/profiles/core/etc/bashrc ~/.bashrc &&
+ln -s ~/Projects/configurations/profiles/core/etc/tmux.conf ~/.tmux.conf &&
+ln -s ~/Projects/configurations/profiles/core/etc/vimrc ~/.vimrc &&
 
 echo 'export PATH="$PATH:~/bin/"' >> ~/.bash_local &&
 chmod +x ~/.bash_local &&
