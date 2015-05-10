@@ -6,11 +6,11 @@ Setup for a [NixOS](nixos.org) machine.
 
 To setup a VM from the vm/default  configuration, you should do the following
 
-- run `vagrant init larryweya/nixos-14.12_64`  # (https://vagrantcloud.com/larryweya/boxes/nixos-14.12_64)
-- run `vagrant up && vagrant ssh`
+- run `./bin/setup-host.sh`
 
 - ***You should now be in the virtual machine***
 - run `nix-env -i vim`
+- run `nix-env -i wget --fallback`
 - run `bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/profiles/ubuntu-server/vm/default/setup-guest.sh)` 
 
 
