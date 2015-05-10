@@ -31,11 +31,12 @@
     emacs24
     tree
     wget
+    gnupg
   ];
 
   # Creates a "vagrant" users with password-less sudo access
   users = {
-    extraGroups = [ { name = "vagrant"; } { name = "vboxsf"; } ];
+    extraGroups = [ { name = "vagrant"; } { name = "vboxsf"; } { name = "twashing"; } ];
     extraUsers  = [ {
       description     = "Vagrant User";
       name            = "vagrant";

@@ -1,9 +1,7 @@
 
-if [ -z "$USERNAME" ]; then
-  echo -n "Please supply a username: "
-  read username
-  export USERNAME=$username
-fi
+echo -n "Please supply a username: "
+read username
+export USERNAME=$username
 
 # Local install 
 sudo su - $USERNAME << 'EOF'
