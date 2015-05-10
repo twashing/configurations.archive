@@ -11,7 +11,7 @@ To setup a VM from the vm/default  configuration, you should do the following
 - ***You should now be in the virtual machine***
 - run `nix-env -i vim`
 - run `nix-env -i wget --fallback`
-- run `bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/profiles/ubuntu-server/vm/default/setup-guest.sh)` 
+- run `bash <(curl -fksSL https://raw.githubusercontent.com/twashing/configurations/master/profiles/nixos/bin/setup-guest.sh)` 
 
 
 ## License
