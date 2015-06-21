@@ -2,9 +2,7 @@
 
 
 # requires an install of GHC, GHCi and Cabal-Install
-
-curl -sL https://deb.nodesource.com/setup_0.10 | sudo bash -
-sudo apt-get install -y nodejs  # node
+# requires an install of NodeJS
 
 cabal install purescript  # psci
 npm install -g pulp

@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# Node & NPM
-# sudo apt-get -y install nodejs npm &&
+# taken from: https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories#node-js-v0-10
+curl -sL https://deb.nodesource.com/setup_0.10 | sudo bash -
+sudo apt-get install -y nodejs  # node
 
-# https://github.com/joyent/node/wiki/installation#building-on-linux
-# http://nodejs.org/download/
-bash < <(curl http://h3manth.com/njs)
 # sudo npm install -g yo &&
 sudo npm install -g grunt &&
 sudo npm install -g grunt-cli &&
