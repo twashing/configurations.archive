@@ -65,10 +65,10 @@ mv ~/.bashrc{,.1}
 mkdir -p ~/Projects &&
 
 git clone https://github.com/twashing/configurations.git ~/Projects/configurations &&
-ln -s ~/Projects/configurations/bash_profile ~/.bash_profile &&
-ln -s ~/Projects/configurations/bashrc ~/.bashrc &&
-ln -s ~/Projects/configurations/tmux.conf ~/.tmux.conf &&
-ln -s ~/Projects/configurations/vimrc ~/.vimrc &&
+ln -s ~/Projects/configurations/profiles/core/etc/bash_profile ~/.bash_profile &&
+ln -s ~/Projects/configurations/profiles/core/etc/bashrc ~/.bashrc &&
+ln -s ~/Projects/configurations/profiles/core/etc/tmux.conf ~/.tmux.conf &&
+ln -s ~/Projects/configurations/profiles/core/etc/vimrc ~/.vimrc &&
 
 echo 'export PATH="$PATH:~/bin/"' >> ~/.bash_local &&
 chmod +x ~/.bash_local &&
