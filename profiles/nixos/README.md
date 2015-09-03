@@ -4,8 +4,9 @@ Setup for a [NixOS](nixos.org) machine.
 
 ## Virtual Machine 
 
-To setup a VM from the vm/default  configuration, you should do the following
+To setup a VM from the vm/default configuration, you should do the following
 
+- mkdir nixos; cd nixos
 - run `./bin/setup-host.sh`
 
 - ***You should now be in the virtual machine***
