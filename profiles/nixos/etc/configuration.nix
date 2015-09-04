@@ -28,7 +28,7 @@
     gnumake
     python
     vim
-    emacs24
+    emacs
     tree
     wget
     gnupg
