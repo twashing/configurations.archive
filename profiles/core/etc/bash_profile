@@ -105,7 +105,15 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-emacs --daemon > /dev/null 2>&1 &
+function _update_ps1() {
+    PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+# emacs --daemon > /dev/null 2>&1 &
 
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 #if [ -f "${HOME}/.gpg-agent-info" ]; then
