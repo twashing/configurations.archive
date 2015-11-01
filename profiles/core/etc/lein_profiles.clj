@@ -1,4 +1,4 @@
-{:user {:plugins [[cider/cider-nrepl "0.9.0-SNAPSHOT"]
+{:user {:plugins [[cider/cider-nrepl "0.9.1"]
                   [venantius/ultra "0.3.2"]
                   [refactor-nrepl "1.0.1"]
                   ;;[lein-ancient "0.5.5"]
