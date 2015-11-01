@@ -69,6 +69,9 @@ alias gdif="git diff --name-only"
 alias gdiff="git diff"
 alias gtree='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
 alias pinentry="pinentry-curses"
+alias grepr="grep -r"
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 # what service are running on which ports 
 alias services_on_ports="lsof -Pnl +M -i4"
@@ -148,4 +151,14 @@ function mkcd () {
 # taken from: http://cfenollosa.com/misc/tricks.txt
 function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 function fname() { find . -iname "*$@*"; }
+
+source ~/.local/bin/bashmarks.sh
+
+# USAGE:
+# ------
+# s <bookmark_name> - Saves the current directory as "bookmark_name"
+# g <bookmark_name> - Goes (cd) to the directory associated with "bookmark_name"
+# p <bookmark_name> - Prints the directory associated with "bookmark_name"
+# d <bookmark_name> - Deletes the bookmark
+# l                 - Lists all available bookmarks
 
