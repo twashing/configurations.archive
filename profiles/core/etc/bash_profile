@@ -85,8 +85,6 @@ alias services_on_ports="lsof -Pnl +M -i4"
 
 
 
-
-
 # EXAMPLES
 #
 # removing sub-directories in git
@@ -99,10 +97,6 @@ alias services_on_ports="lsof -Pnl +M -i4"
 
 if [ -f ~/.bash_local ]; then
   . ~/.bash_local
-fi
-
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
 fi
 
 function _update_ps1() {
