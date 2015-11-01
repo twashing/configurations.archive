@@ -23,7 +23,7 @@ sudo apt-get update &&
 # Tools 
 echo; echo ">> Installing General Tools..."
 sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev gnustep-base-runtime gnupg gnupg-agent unzip autoconf libgmp3-dev libncurses5-dev &&
-
+sudo apt-get -y install rlwrap
 
 # Vim 
 echo; echo ">> Installing Vim..."
@@ -33,6 +33,7 @@ sudo apt-get install -y vim-nox &&
 # TODO ... vim-airline
 
 # Emacs (https://launchpad.net/~cassou/+archive/emacs)
+# See here for manual install of latest version: http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/
 echo; echo ">> Installing Emacs..."
 sudo apt-get install -y software-properties-common python-software-properties && 
 sudo add-apt-repository ppa:cassou/emacs && sudo apt-get update && sudo apt-get install -y emacs24 &&
@@ -40,6 +41,7 @@ sudo add-apt-repository ppa:cassou/emacs && sudo apt-get update && sudo apt-get 
 # Git 
 echo; echo ">> Installing Git..."
 sudo apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev &&
+sudo add-apt-repository ppa:git-core/ppa && sudo apt-get update
 sudo apt-get -y install git &&
 
 echo -n "What's your git name: "
