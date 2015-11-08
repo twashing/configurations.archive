@@ -101,10 +101,6 @@ if [ -f ~/.bash_local ]; then
   . ~/.bash_local
 fi
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
-
 function _update_ps1() {
     PS1="$(~/powerline-shell.py $? 2> /dev/null)"
 }
