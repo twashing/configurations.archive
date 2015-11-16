@@ -85,8 +85,6 @@ alias services_on_ports="lsof -Pnl +M -i4"
 
 
 
-
-
 # EXAMPLES
 #
 # removing sub-directories in git
