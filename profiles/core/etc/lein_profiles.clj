@@ -9,7 +9,6 @@
                   [lein-ring "0.9.7"]
                   [lein-try "0.4.3"]
                   [lein-localrepo "0.5.3"]
-                  [alembic "0.3.2"]
 
                   [lein-cljsbuild "1.1.1"]
                   [lein-clojars "0.9.1"]
@@ -20,18 +19,36 @@
                   [venantius/ultra "0.4.0"]
                   ]
 
-        :dependencies [[alembic "0.3.2"]
-                       [spyscope "0.1.5"]
+        :dependencies [[spyscope "0.1.5"]
                        [org.clojure/tools.namespace "0.2.10"]
                        [io.aviso/pretty "0.1.19"]
-                       [im.chit/vinyasa "0.4.2"]]
+                       [im.chit/vinyasa "0.4.2"]
+                       [alembic "0.3.2"]]
 
         :injections [(require 'spyscope.core)
                      (require '[vinyasa.inject :as inject])
-                     (require 'io.aviso.repl)
                      (require 'alembic.still)
+                     (require 'io.aviso.repl)
+
+                     (inject/in
+
+                      ;; the default injected namespace is `.`
+                      ;; note that `:refer, :all and :exclude can be used
+                      [vinyasa.inject :refer [inject [in inject-in]]]
+                      [alembic.still :refer [distill load-project]]
+
+                      ;; inject into clojure.core
+                      clojure.core
+                      [vinyasa.reflection .> .? .* .% .%> .& .>ns .>var]
+
+                      ;; inject into clojure.core with prefix
+                      clojure.core >
+                      [clojure.pprint pprint]
+                      [clojure.java.shell sh])
+ 
+                     (alter-var-root #'clojure.main/repl-caught
+                                     (constantly @#'io.aviso.repl/pretty-pst))
+                     (alter-var-root #'clojure.repl/pst
+                                     (constantly @#'io.aviso.repl/pretty-pst))
                      
-                     (inject/in clojure.core >
-                                [alembic.still load-project]
-                                [clojure.pprint pprint]
-                                [clojure.repl apropos])]}}
+                     ]}}
