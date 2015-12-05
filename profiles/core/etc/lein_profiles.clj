@@ -16,7 +16,7 @@
                   [lein-shell "0.4.1"]
 
                   [mvxcvi/whidbey "1.3.0"]
-                  [venantius/ultra "0.4.0"]
+                  ;;[venantius/ultra "0.4.0"]
                   ]
 
         :dependencies [[spyscope "0.1.5"]
@@ -37,6 +37,8 @@
                       [vinyasa.inject :refer [inject [in inject-in]]]
                       [alembic.still :refer [distill load-project]]
 
+                      [clojure.tools.namespace.repl :refer [refresh]]
+                      
                       ;; inject into clojure.core
                       clojure.core
                       [vinyasa.reflection .> .? .* .% .%> .& .>ns .>var]
