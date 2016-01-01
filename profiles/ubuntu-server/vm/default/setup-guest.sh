@@ -35,8 +35,8 @@ wget -P ~/Downloads https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz &&
     cd ~/Downloads/Python-3.5.1 &&
     ./configure &&
     make &&
-    make test &&
-    sudo apt-get build-dep python3.4 &&
+    # make test &&
+    sudo apt-get -y build-dep python3.4 &&
     sudo make install &&
 
     sudo apt-get -y install python-pip &&
@@ -45,7 +45,7 @@ wget -P ~/Downloads https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz &&
 # Emacs (https://launchpad.net/~cassou/+archive/emacs)
 # See here for manual install of latest version: http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/
 echo; echo ">> Installing Emacs..."
-sudo apt-get -y build-dep emacs24
+# sudo apt-get -y build-dep emacs24
 wget -P ~/Downloads http://gnu.mirror.vexxhost.com/emacs/emacs-24.5.tar.gz
 tar xvzf emacs-24.5.tar*  -C ~/Downloads/
 cd ~/Downloads/emacs-24.5/
@@ -95,6 +95,15 @@ ln -s ~/Projects/configurations/profiles/core/etc/vimrc ~/.vimrc &&
 echo 'export PATH="$PATH:~/bin/"' >> ~/.bash_local &&
 chmod +x ~/.bash_local &&
 ~/.bash_local
+
+
+# Powerline
+# http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
+pip install --user git+git://github.com/Lokaltog/powerline
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
+fc-cache -vf ~/.fonts
+mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
 EOF
 
