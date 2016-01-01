@@ -1,6 +1,10 @@
 #!/bin/bash
 
-sudo apt-get update && 
+echo -n "What's your git name: "
+read gitname
+
+echo -n "What's your git email: "
+read gitemail
 
 # Create New User
 script_create_user=$(cat <<'EOF'
@@ -31,6 +35,7 @@ sudo apt-get install -y vim-nox
 
 # Python
 echo; echo ">> Installing Python..."
+sudo apt-get -y install software-properties-common
 wget -P ~/Downloads https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz &&
     tar xvzf ~/Downloads/Python-3.5.1.tgz -C ~/Downloads/ &&
     cd ~/Downloads/Python-3.5.1 &&
@@ -57,12 +62,6 @@ echo; echo ">> Installing Git..."
 sudo apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev &&
 sudo add-apt-repository ppa:git-core/ppa && sudo apt-get update
 sudo apt-get -y install git &&
-
-echo -n "What's your git name: "
-read gitname
-
-echo -n "What's your git email: "
-read gitemail
 
 git config --global user.name $gitname
 git config --global user.email $gitemail
