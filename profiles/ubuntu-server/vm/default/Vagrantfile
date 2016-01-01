@@ -1,0 +1,17 @@
+
+# taking example 1 from https://github.com/patrickdlee/vagrant-examples
+# Vagrant.configure("2") do |config|
+Vagrant::Config.run do |config|
+  
+  config.vm.box = "hashicorp/precise64"
+  # config.vm.box = 'vivid'
+  # config.vm.box_url = 'https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box'
+
+  config.vm.network :forwarded_port,
+    guest: 22,
+    host: 2200,
+    id: "ssh",
+    auto_correct: true
+  config.vm.network :private_network, type: :dhcp
+  config.vm.customize ["modifyvm", :id, "--memory", 1024]
+end
