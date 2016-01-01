@@ -30,6 +30,7 @@ echo; echo ">> Installing Vim..."
 sudo apt-get install -y vim-nox
 
 # Python
+echo; echo ">> Installing Python..."
 wget -P ~/Downloads https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz &&
     tar xvzf ~/Downloads/Python-3.5.1.tgz -C ~/Downloads/ &&
     cd ~/Downloads/Python-3.5.1 &&
