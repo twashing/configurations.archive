@@ -6,6 +6,10 @@ if [ -f ~/.local/bin/bashmarks.sh ]; then
   source ~/.local/bin/bashmarks.sh
 fi
 
+if [ -d "$HOME/.local/bin" ]; then
+   PATH="$HOME/.local/bin:$PATH"
+fi
+
 function ubuntu-version {
   lsb_release -a
 }
@@ -99,13 +103,24 @@ if [ -f ~/.bash_local ]; then
   . ~/.bash_local
 fi
 
-function _update_ps1() {
-    PS1="$(~/powerline-shell.py $? 2> /dev/null)"
-}
+# function _update_ps1() {
+#     PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+# }
+# 
+# if [ "$TERM" != "linux" ]; then
+#     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
 
-if [ "$TERM" != "linux" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# . $POWERLINE_HOME/bindings/bash/powerline.sh
+
+POWERLINE_HOME="~/.local/lib/python2.7/site-packages/powerline"
+if [ -f $POWERLINE_HOME/bindings/bash/powerline.sh ]; then
+   source $POWERLINE_HOME/bindings/bash/powerline.sh
 fi
+
 
 # emacs --daemon > /dev/null 2>&1 &
 
