@@ -99,13 +99,19 @@ if [ -f ~/.bash_local ]; then
   . ~/.bash_local
 fi
 
-function _update_ps1() {
-    PS1="$(~/powerline-shell.py $? 2> /dev/null)"
-}
+# function _update_ps1() {
+#     PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+# }
+# 
+# if [ "$TERM" != "linux" ]; then
+#     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
 
-if [ "$TERM" != "linux" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+powerline-daemon -q
+POWERLINE_HOME=""~/.local/lib/python2.7/site-packages/powerline""
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. $POWERLINE_HOME/bindings/bash/powerline.sh
 
 # emacs --daemon > /dev/null 2>&1 &
 
