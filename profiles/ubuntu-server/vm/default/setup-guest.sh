@@ -18,25 +18,38 @@ sudo sh -c "$script_create_user" $username
 
 # Update Tools
 echo; echo ">> Updating Apt-Get listings..."
-sudo apt-get update && 
+sudo apt-get update
 
 # Tools 
 echo; echo ">> Installing General Tools..."
 sudo apt-get -y install tree tmux build-essential zlib1g-dev libssl-dev libreadline6-dev gnustep-base-runtime gnupg gnupg-agent unzip autoconf libgmp3-dev libncurses5-dev &&
-sudo apt-get -y install rlwrap
+    sudo apt-get -y install rlwrap
 
 # Vim 
 echo; echo ">> Installing Vim..."
-sudo apt-get install -y vim-nox &&
+sudo apt-get install -y vim-nox
 
-# TODO ... Vundle
-# TODO ... vim-airline
+# Python
+wget -P ~/Downloads https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz &&
+    tar xvzf ~/Downloads/Python-3.5.1.tgz -C ~/Downloads/ &&
+    cd ~/Downloads/Python-3.5.1 &&
+    ./configure &&
+    make &&
+    make test &&
+    sudo apt-get build-dep python3.4 &&
+    sudo make install &&
+
+    sudo apt-get -y install python-pip &&
+    pip install -U pip setuptools
 
 # Emacs (https://launchpad.net/~cassou/+archive/emacs)
 # See here for manual install of latest version: http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/
 echo; echo ">> Installing Emacs..."
-sudo apt-get install -y software-properties-common python-software-properties && 
-sudo add-apt-repository ppa:cassou/emacs && sudo apt-get update && sudo apt-get install -y emacs24 &&
+sudo apt-get -y build-dep emacs24
+wget -P ~/Downloads http://gnu.mirror.vexxhost.com/emacs/emacs-24.5.tar.gz
+tar xvzf emacs-24.5.tar*  -C ~/Downloads/
+cd ~/Downloads/emacs-24.5/
+./configure && make && sudo make install
 
 # Git 
 echo; echo ">> Installing Git..."
@@ -59,12 +72,19 @@ sudo adduser $username sudo
 # Local install 
 sudo su - $username << 'EOF'
 
-echo ">> Runnin local config as[ $(whoami) ]"
+echo ">> Running local config as[ $(whoami) ]"
+
+# Bashmarks
+git clone git://github.com/huyng/bashmarks.git
+cd bashmarks
+make install
+
 
 # Configurations
 echo; echo ">> Setting Configurations..."
 mv ~/.bashrc{,.1}
 mkdir -p ~/Projects &&
+
 
 git clone https://github.com/twashing/configurations.git ~/Projects/configurations &&
 ln -s ~/Projects/configurations/profiles/core/etc/bash_profile ~/.bash_profile &&
