@@ -51,11 +51,13 @@ wget -P ~/Downloads https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz &&
 # Emacs (https://launchpad.net/~cassou/+archive/emacs)
 # See here for manual install of latest version: http://ubuntuhandbook.org/index.php/2014/10/emacs-24-4-released-install-in-ubuntu-14-04/
 echo; echo ">> Installing Emacs..."
-# sudo apt-get -y build-dep emacs24
+sudo apt-get -y build-dep emacs24
 wget -P ~/Downloads http://gnu.mirror.vexxhost.com/emacs/emacs-24.5.tar.gz
+cd ~/Downloads
 tar xvzf emacs-24.5.tar*  -C ~/Downloads/
 cd ~/Downloads/emacs-24.5/
-./configure && make && sudo make install
+sudo apt-get -y install libxpm-dev libjpeg-dev libgif-dev libtiff5-dev
+./configure --with-x-toolkit=no && make && sudo make install
 
 # Git 
 echo; echo ">> Installing Git..."
