@@ -28,12 +28,12 @@ export SCALA_HOME="~/Tools/scala-2.11.6"
 export GOPATH="$HOME/go"
 export PROJECTS_HOME="~/Projects"
 export PATH="$PATH:\
+/sbin/:\
 ~/bin/:\
 ~/.cask/bin:\
 ~/.cabal/bin:\
 $JAVA_HOME/bin:\
 $GOPATH/bin"
-
 
 
 alias em="emacs"
