@@ -1,4 +1,4 @@
-{:user {:plugins [[cider/cider-nrepl "0.10.0-SNAPSHOT"]
+{:user {:plugins [[cider/cider-nrepl "0.11.0-SNAPSHOT"]
                   [refactor-nrepl "2.0.0-SNAPSHOT"]
                   
                   [lein-ancient "0.6.8"]
@@ -15,7 +15,7 @@
                   [lein-auto "0.1.2"]
                   [lein-shell "0.4.1"]
 
-                  [mvxcvi/whidbey "1.3.0"]
+                  ;;[mvxcvi/whidbey "1.3.0"]
                   ;;[venantius/ultra "0.4.0"]
                   ]
 
@@ -23,7 +23,9 @@
                        [org.clojure/tools.namespace "0.2.10"]
                        [io.aviso/pretty "0.1.19"]
                        [im.chit/vinyasa "0.4.2"]
-                       [alembic "0.3.2"]]
+                       [alembic "0.3.2"]
+                       #_[leiningen #=(leiningen.core.main/leiningen-version)]
+                       ]
 
         :injections [(require 'spyscope.core)
                      (require '[vinyasa.inject :as inject])
@@ -35,6 +37,7 @@
                       ;; the default injected namespace is `.`
                       ;; note that `:refer, :all and :exclude can be used
                       [vinyasa.inject :refer [inject [in inject-in]]]
+                      #_[vinyasa.lein :refer [lein] :exclude [*project*]]
                       [alembic.still :refer [distill load-project]]
 
                       [clojure.tools.namespace.repl :refer [refresh]]
