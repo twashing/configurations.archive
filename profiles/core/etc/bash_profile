@@ -6,6 +6,10 @@ if [ -f ~/.local/bin/bashmarks.sh ]; then
   source ~/.local/bin/bashmarks.sh
 fi
 
+if [ -d "$HOME/.local/bin" ]; then
+   PATH="$HOME/.local/bin:$PATH"
+fi
+
 function ubuntu-version {
   lsb_release -a
 }
@@ -21,23 +25,15 @@ set -o emacs
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
 export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
 export SCALA_HOME="~/Tools/scala-2.11.6"
-#export JRE_HOME="/usr/lib/jvm/jdk1.7.0_25/jre"
+export GOPATH="$HOME/go"
 export PROJECTS_HOME="~/Projects"
-export CLOJURESCRIPT_HOME="$PROJECTS_HOME/bkell/vendor/clojurescript"
 export PATH="$PATH:\
+/sbin/:\
 ~/bin/:\
 ~/.cask/bin:\
 ~/.cabal/bin:\
-~/Downloads/vmware-server-distrib/bin/:\
 $JAVA_HOME/bin:\
-$JRE_HOME/bin:\
-$SCALA_HOME/bin:\
-$PROJECTS_HOME/vimclojure-nailgun-client/:\
-$CLOJURESCRIPT_HOME/bin:\
-$CLOJURESCRIPT_HOME/script:\
-/opt/adt-bundle-linux-x86_64-20131030/sdk/platform-tools:\
-/opt/adt-bundle-linux-x86_64-20131030/sdk/tools"
-
+$GOPATH/bin"
 
 
 alias em="emacs"
@@ -99,13 +95,32 @@ if [ -f ~/.bash_local ]; then
   . ~/.bash_local
 fi
 
-function _update_ps1() {
-    PS1="$(~/powerline-shell.py $? 2> /dev/null)"
-}
+# function _update_ps1() {
+#     PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+# }
+# 
+# if [ "$TERM" != "linux" ]; then
+#     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
 
-if [ "$TERM" != "linux" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# . $POWERLINE_HOME/bindings/bash/powerline.sh
+
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+export POWERLINE_HOME="~/.local/lib/python2.7/site-packages/powerline"
+if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+   source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 fi
+
 
 # emacs --daemon > /dev/null 2>&1 &
 
