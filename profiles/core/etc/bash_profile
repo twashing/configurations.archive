@@ -1,23 +1,23 @@
 if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
+    . ~/.bashrc
 fi
 
 if [ -f ~/.local/bin/bashmarks.sh ]; then
-  source ~/.local/bin/bashmarks.sh
+    source ~/.local/bin/bashmarks.sh
 fi
 
 if [ -d "$HOME/.local/bin" ]; then
-   PATH="$HOME/.local/bin:$PATH"
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 function ubuntu-version {
-  lsb_release -a
+    lsb_release -a
 }
 function ubuntu-packages {
-  dpkg --get-selections | grep -v deinstall
+    dpkg --get-selections | grep -v deinstall
 }
 function git-log-tree {
-  git log --all --graph --decorate --oneline --simplify-by-decoration
+    git log --all --graph --decorate --oneline --simplify-by-decoration
 }
 
 set -o emacs
@@ -34,6 +34,9 @@ export PATH="$PATH:\
 ~/.cabal/bin:\
 $JAVA_HOME/bin:\
 $GOPATH/bin"
+
+# Taken from SO:
+# http://stackoverflow.com/questions/13322485/how-to-i-get-the-primary-ip-address-of-the-local-machine-on-linux-and-os-x
 export IP_ADDRESS=$(ip addr show eth1 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*')
 
 
@@ -60,6 +63,7 @@ alias gip="g ip"
 
 alias ebashp="vim ~/.bash_profile"
 alias evimrc="vim ~/.vimrc"
+alias eprofiles="vim ~/.lein/profiles.clj"
 alias lrepl="lein repl"
 alias rf="rm -rf"
 alias gdif="git diff --name-only"
@@ -70,7 +74,7 @@ alias grepr="grep -r"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
-# what service are running on which ports 
+# what service are running on which ports
 alias services_on_ports="lsof -Pnl +M -i4"
 
 
@@ -93,13 +97,13 @@ alias services_on_ports="lsof -Pnl +M -i4"
 
 
 if [ -f ~/.bash_local ]; then
-  . ~/.bash_local
+    . ~/.bash_local
 fi
 
 # function _update_ps1() {
 #     PS1="$(~/powerline-shell.py $? 2> /dev/null)"
 # }
-# 
+#
 # if [ "$TERM" != "linux" ]; then
 #     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 # fi
@@ -119,7 +123,7 @@ LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
 export POWERLINE_HOME="~/.local/lib/python2.7/site-packages/powerline"
 if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-   source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
 
@@ -152,14 +156,14 @@ fi
 # Invoke GnuPG-Agent the first time we login.
 # Does `.gpg-agent-info' exist and points to a gpg-agent process accepting signals?
 if [ -f $HOME/.gpg-agent-info ] && \
-    kill -0 $(cut -d: -f 2 $HOME/.gpg-agent-info) 2>/dev/null
+       kill -0 $(cut -d: -f 2 $HOME/.gpg-agent-info) 2>/dev/null
 then
     # Yes, `.gpg-agent.info' points to valid gpg-agent process;
-        # Indicate gpg-agent process
+    # Indicate gpg-agent process
     GPG_AGENT_INFO=$(cat $HOME/.gpg-agent-info | cut -c 16-)
 else
     # No, no valid gpg-agent process available;
-        # Start gpg-agent
+    # Start gpg-agent
     eval $(gpg-agent --daemon --no-grab --write-env-file $HOME/.gpg-agent-info)
 fi
 export GPG_TTY=$(tty)
@@ -167,7 +171,7 @@ export GPG_AGENT_INFO
 
 # taken from: https://twitter.com/_komaz/status/514628905576460288
 function mkcd () {
-     mkdir -p "$1" && cd "$1"
+    mkdir -p "$1" && cd "$1"
 }
 
 # taken from: http://cfenollosa.com/misc/tricks.txt
@@ -183,4 +187,3 @@ source ~/.local/bin/bashmarks.sh
 # p <bookmark_name> - Prints the directory associated with "bookmark_name"
 # d <bookmark_name> - Deletes the bookmark
 # l                 - Lists all available bookmarks
-
