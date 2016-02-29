@@ -1,6 +1,5 @@
 {:user {:plugins [[cider/cider-nrepl "0.11.0-SNAPSHOT"]
-                  [refactor-nrepl "2.0.0-SNAPSHOT"]
-
+                  [refactor-nrepl "2.2.0-SNAPSHOT"]
                   [lein-ancient "0.6.8"]
                   [codox "0.9.4"]
                   [lein-ritz "0.7.0"]
@@ -9,15 +8,12 @@
                   [lein-ring "0.9.7"]
                   [lein-try "0.4.3"]
                   [lein-localrepo "0.5.3"]
-
                   [lein-cljsbuild "1.1.2"]
                   [lein-clojars "0.9.1"]
                   [lein-auto "0.1.2"]
                   [lein-shell "0.5.0"]
-
-                  ;;[mvxcvi/whidbey "1.3.0"]
-                  ;;[venantius/ultra "0.4.0"]
-                  ]
+                  [mvxcvi/whidbey "1.3.0"]
+                  [venantius/ultra "0.4.0"]]
 
         :dependencies [[spyscope "0.1.5"]
                        [org.clojure/tools.namespace "0.2.10"]
@@ -54,6 +50,4 @@
                      (alter-var-root #'clojure.main/repl-caught
                                      (constantly @#'io.aviso.repl/pretty-pst))
                      (alter-var-root #'clojure.repl/pst
-                                     (constantly @#'io.aviso.repl/pretty-pst))
-
-                     ]}}
+                                     (constantly @#'io.aviso.repl/pretty-pst))]}}
