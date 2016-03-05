@@ -28,8 +28,8 @@ export SCALA_HOME="~/Tools/scala-2.11.6"
 export GOPATH="$HOME/go"
 export PROJECTS_HOME="~/Projects"
 export PATH="$PATH:\
-/sbin/:\
-~/bin/:\
+/sbin:\
+~/bin:\
 ~/.cask/bin:\
 ~/.cabal/bin:\
 $JAVA_HOME/bin:\
@@ -100,18 +100,18 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
-# function _update_ps1() {
-#     PS1="$(~/powerline-shell.py $? 2> /dev/null)"
-# }
-#
-# if [ "$TERM" != "linux" ]; then
-#     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-# fi
+function _update_ps1() {
+    PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+}
 
-# powerline-daemon -q
-# POWERLINE_BASH_CONTINUATION=1
-# POWERLINE_BASH_SELECT=1
-# . $POWERLINE_HOME/bindings/bash/powerline.sh
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. $POWERLINE_HOME/bindings/bash/powerline.sh
 
 LANG="en_US.UTF-8"
 LC_COLLATE="en_US.UTF-8"
@@ -121,9 +121,11 @@ LC_MONETARY="en_US.UTF-8"
 LC_NUMERIC="en_US.UTF-8"
 LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
-export POWERLINE_HOME="~/.local/lib/python2.7/site-packages/powerline"
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+
+export POWERLINE_CONFIG_COMMAND="powerline-config"
+export POWERLINE_HOME="~/Library/Python/2.7/lib/python/site-packages/powerline"
+if [ -f $POWERLINE_HOME/bindings/bash/powerline.sh ]; then
+    source $POWERLINE_HOME/bindings/bash/powerline.sh
 fi
 
 

@@ -1,4 +1,4 @@
-{:user {:plugins [[cider/cider-nrepl "0.11.0-SNAPSHOT"]
+{:user {:plugins [[cider/cider-nrepl "0.12.0-SNAPSHOT"]
                   [refactor-nrepl "2.2.0-SNAPSHOT"]
                   [lein-ancient "0.6.8"]
                   [codox "0.9.4"]
@@ -13,15 +13,15 @@
                   [lein-auto "0.1.2"]
                   [lein-shell "0.5.0"]
                   [mvxcvi/whidbey "1.3.0"]
-                  [venantius/ultra "0.4.0"]]
+                  [venantius/ultra "0.4.1"]]
 
         :dependencies [[spyscope "0.1.5"]
                        [org.clojure/tools.namespace "0.2.10"]
-                       [io.aviso/pretty "0.1.23"]
+                       [io.aviso/pretty "0.1.24"]
                        [im.chit/vinyasa "0.4.2"]
                        [alembic "0.3.2"]
-                       [leiningen "2.6.1"]
-                       ]
+                       [fipp "0.6.4"]
+                       [leiningen "2.6.1"]]
 
         :injections [(require 'spyscope.core)
                      (require '[vinyasa.inject :as inject])
