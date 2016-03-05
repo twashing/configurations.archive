@@ -20,8 +20,7 @@
                        [io.aviso/pretty "0.1.23"]
                        [im.chit/vinyasa "0.4.2"]
                        [alembic "0.3.2"]
-                       [leiningen "2.6.1"]
-                       ]
+                       [leiningen "2.6.1"]]
 
         :injections [(require 'spyscope.core)
                      (require '[vinyasa.inject :as inject])
