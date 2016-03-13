@@ -301,7 +301,7 @@ in `dotspacemacs/user-config'."
 
   (setq tab-width 2)
   (setq-default js-indent-level 2)
-  (setq clojure-enable-fancify-symbols t)
+  (setq clojure-enable-fancify-symbols nil)
   )
 
 (defun dotspacemacs/user-config ()
