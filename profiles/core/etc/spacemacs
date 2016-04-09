@@ -38,6 +38,7 @@ values."
             shell-default-height 30
             shell-default-position 'bottom)
      yaml
+     bash
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
@@ -264,7 +265,6 @@ in `dotspacemacs/user-config'."
     (just-one-space -1))
 
 
-
   (global-set-key (kbd "C-x M-x") 'isearch-forward-symbol-at-point)
   (global-set-key (kbd "C-x C-g") 'grep-find)
   (global-set-key (kbd "C-x C-m") 'magit-status)
@@ -301,7 +301,7 @@ in `dotspacemacs/user-config'."
 
   (setq tab-width 2)
   (setq-default js-indent-level 2)
-  (setq clojure-enable-fancify-symbols t)
+  (setq clojure-enable-fancify-symbols nil)
   )
 
 (defun dotspacemacs/user-config ()
