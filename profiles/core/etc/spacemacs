@@ -37,6 +37,7 @@ values."
             shell-default-height 30
             shell-default-position 'bottom)
      yaml
+     bash
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
@@ -261,7 +262,6 @@ in `dotspacemacs/user-config'."
   (defun delete-whitespace-except-one ()
     (interactive)
     (just-one-space -1))
-
 
 
   (global-set-key (kbd "C-x M-x") 'isearch-forward-symbol-at-point)
