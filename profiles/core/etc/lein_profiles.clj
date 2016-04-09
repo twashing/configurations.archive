@@ -15,9 +15,10 @@
                   [mvxcvi/whidbey "1.3.0"]
                   [venantius/ultra "0.4.1"]]
 
-        :dependencies [[spyscope "0.1.5"]
+        :dependencies [[org.clojure/tools.nrepl "0.2.12"]
                        [org.clojure/tools.namespace "0.2.10"]
                        [com.cemerick/piggieback "0.2.1"]
+                       [spyscope "0.1.5"]
                        [io.aviso/pretty "0.1.24"]
                        [im.chit/vinyasa "0.4.2"]
                        [alembic "0.3.2"]

@@ -73,7 +73,9 @@ alias pinentry="pinentry-curses"
 alias grepr="grep -r"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
-
+function echon {
+  echo $1 | tr $2 '\n'
+}
 # what service are running on which ports
 alias services_on_ports="lsof -Pnl +M -i4"
 

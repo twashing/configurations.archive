@@ -2,7 +2,6 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-
 (defun dotspacemacs/layers ()
   "configuration layers declaration.
 you should not put any user code in this function besides modifying the variable
@@ -299,10 +298,14 @@ in `dotspacemacs/user-config'."
   (global-set-key (kbd "C-M-s") 'sp-backward-slurp-sexp)
   (global-set-key (kbd "C-M-e") 'sp-backward-barf-sexp)
 
+  ;; reverse-engineered from https://github.com/pmarinov/clean-aindent-mode/blob/master/clean-aindent-mode.el
+  ;; ... from https://github.com/pmarinov/clean-aindent-mode
+  (define-key clean-aindent-mode--keymap (kbd "M-DEL") 'sp-backward-kill-word)
+  ;; (global-set-key "C-delete" 'sp-backward-kill-symbol)
+
   (setq tab-width 2)
   (setq-default js-indent-level 2)
-  (setq clojure-enable-fancify-symbols nil)
-  )
+  (setq clojure-enable-fancify-symbols nil))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
