@@ -298,14 +298,27 @@ in `dotspacemacs/user-config'."
   (global-set-key (kbd "C-M-s") 'sp-backward-slurp-sexp)
   (global-set-key (kbd "C-M-e") 'sp-backward-barf-sexp)
 
+
+  (global-set-key (kbd "M-r") 'sp-raise-sexp)
+
   ;; reverse-engineered from https://github.com/pmarinov/clean-aindent-mode/blob/master/clean-aindent-mode.el
   ;; ... from https://github.com/pmarinov/clean-aindent-mode
-  (define-key clean-aindent-mode--keymap (kbd "M-DEL") 'sp-backward-kill-word)
-  ;; (global-set-key "C-delete" 'sp-backward-kill-symbol)
+  ;; (define-key clean-aindent-mode--keymap (kbd "M-DEL") 'sp-backward-kill-word)
+
+  ;; (define-key smartparens-mode-map (kbd "M-DEL") 'sp-backward-kill-word)
+  (global-set-key (kbd "M-DEL") 'sp-backward-kill-word)
+  ;; (global-set-key (kbd "C-DEL") 'sp-backward-kill-symbol)
+  ;; (global-set-key (kbd "C-M-DEL") 'sp-backward-kill-sexp)
+
+  ;; (foo bar-baz)
 
   (setq tab-width 2)
   (setq-default js-indent-level 2)
-  (setq clojure-enable-fancify-symbols nil))
+  (setq clojure-enable-fancify-symbols nil)
+
+  (use-package hcl-mode
+    :ensure t))
+
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -330,3 +343,4 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+
