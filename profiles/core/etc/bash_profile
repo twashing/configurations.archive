@@ -195,3 +195,7 @@ source ~/.local/bin/bashmarks.sh
 # p <bookmark_name> - Prints the directory associated with "bookmark_name"
 # d <bookmark_name> - Deletes the bookmark
 # l                 - Lists all available bookmarks
+
+# Docker configuration
+eval $(docker-machine env default)
+

@@ -25,7 +25,8 @@
                       ;; note that `:refer, :all and :exclude can be used
                       [vinyasa.inject :refer [inject [in inject-in]]]
                       [vinyasa.lein :refer [lein] :exclude [*project*]]
-                      [clojure.tools.namespace.repl :refer [refresh]]
+                      [clojure.tools.namespace.repl :refer [refre
+                                                            sh]]
 
                       ;; inject into clojure.core
                       clojure.core
