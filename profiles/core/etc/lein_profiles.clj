@@ -1,5 +1,5 @@
-{:user {:plugins [[cider/cider-nrepl "0.12.0"]
-                  [refactor-nrepl "2.2.0"]
+{:user {:plugins [#_[cider/cider-nrepl "0.12.0"]
+                  #_[refactor-nrepl "2.2.0"]
                   [lein-ancient "0.6.8"]
                   [lein-ring "0.9.7"]
                   [lein-try "0.4.3"]
