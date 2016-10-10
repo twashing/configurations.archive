@@ -39,6 +39,10 @@ export PATH="$PATH:\
 $JAVA_HOME/bin:\
 $GOPATH/bin"
 
+# Taken from SO:
+# http://stackoverflow.com/questions/13322485/how-to-i-get-the-primary-ip-address-of-the-local-machine-on-linux-and-os-x
+export IP_ADDRESS=$(ip addr show eth1 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*')
+
 
 alias em="emacs"
 alias ec="emacsclient"
@@ -110,28 +114,68 @@ if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-# powerline-daemon -q
-# POWERLINE_BASH_CONTINUATION=1
-# POWERLINE_BASH_SELECT=1
-# . $POWERLINE_HOME/bindings/bash/powerline.sh
-# 
-# LANG="en_US.UTF-8"
-# LC_COLLATE="en_US.UTF-8"
-# LC_CTYPE="en_US.UTF-8"
-# LC_MESSAGES="en_US.UTF-8"
-# LC_MONETARY="en_US.UTF-8"
-# LC_NUMERIC="en_US.UTF-8"
-# LC_TIME="en_US.UTF-8"
-# LC_ALL="en_US.UTF-8"
-# 
-# export POWERLINE_CONFIG_COMMAND="powerline-config"
-# export POWERLINE_HOME="~/Library/Python/2.7/lib/python/site-packages/powerline"
-# if [ -f $POWERLINE_HOME/bindings/bash/powerline.sh ]; then
-#     source $POWERLINE_HOME/bindings/bash/powerline.sh
-# fi
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. $POWERLINE_HOME/bindings/bash/powerline.sh
+
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+
+export POWERLINE_CONFIG_COMMAND="powerline-config"
+export POWERLINE_HOME="~/Library/Python/2.7/lib/python/site-packages/powerline"
+if [ -f $POWERLINE_HOME/bindings/bash/powerline.sh ]; then
+    source $POWERLINE_HOME/bindings/bash/powerline.sh
+fi
 
 
 # emacs --daemon > /dev/null 2>&1 &
+
+#gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
+#if [ -f "${HOME}/.gpg-agent-info" ]; then
+#  . "${HOME}/.gpg-agent-info"
+#  export GPG_AGENT_INFO
+#  export SSH_AUTH_SOCK
+#fi
+#
+#GPG_TTY=$(tty)
+#export GPG_TTY
+
+
+# Invoke GnuPG-Agent the first time we login.
+# Does `~/.gpg-agent-info' exist and points to gpg-agent process accepting signals?
+#if test -f $HOME/.gpg-agent-info && \
+#    kill -0 `cut -d: -f 2 $HOME/.gpg-agent-info` 2>/dev/null; then
+#    GPG_AGENT_INFO=`cat $HOME/.gpg-agent-info | cut -c 16-`
+#else
+#    # No, gpg-agent not available; start gpg-agent
+#    eval `gpg-agent --daemon --no-grab --write-env-file $HOME/.gpg-agent-info`
+#fi
+#export GPG_TTY=`tty`
+#export GPG_AGENT_INFO
+
+
+# Invoke GnuPG-Agent the first time we login.
+# Does `.gpg-agent-info' exist and points to a gpg-agent process accepting signals?
+if [ -f $HOME/.gpg-agent-info ] && \
+       kill -0 $(cut -d: -f 2 $HOME/.gpg-agent-info) 2>/dev/null
+then
+    # Yes, `.gpg-agent.info' points to valid gpg-agent process;
+    # Indicate gpg-agent process
+    GPG_AGENT_INFO=$(cat $HOME/.gpg-agent-info | cut -c 16-)
+else
+    # No, no valid gpg-agent process available;
+    # Start gpg-agent
+    eval $(gpg-agent --daemon --no-grab --write-env-file $HOME/.gpg-agent-info)
+fi
+export GPG_TTY=$(tty)
+export GPG_AGENT_INFO
 
 # taken from: https://twitter.com/_komaz/status/514628905576460288
 function mkcd () {
@@ -151,7 +195,3 @@ source ~/.local/bin/bashmarks.sh
 # p <bookmark_name> - Prints the directory associated with "bookmark_name"
 # d <bookmark_name> - Deletes the bookmark
 # l                 - Lists all available bookmarks
-
-# Docker configuration
-# eval $(docker-machine env default)
-
