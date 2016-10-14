@@ -1,4 +1,9 @@
-{:user {:plugins [[cider/cider-nrepl "0.13.0-snapshot"]
+{:user {:dependencies [[spyscope "0.1.5"]]
+        :injections [(require 'spyscope.core)]
+        :plugins [[cider/cider-nrepl "0.13.0-snapshot"]
+                  [refactor-nrepl "2.2.0"]]}}
+
+#_{:user {:plugins [[cider/cider-nrepl "0.13.0-snapshot"]
                   [refactor-nrepl "2.2.0"]
                   [lein-ancient "0.6.10"]
                   [lein-ring "0.9.7"]
@@ -29,8 +34,7 @@
                       ;; note that `:refer, :all and :exclude can be used
                       [vinyasa.inject :refer [inject [in inject-in]]]
                       [vinyasa.lein :refer [lein] :exclude [*project*]]
-                      [clojure.tools.namespace.repl :refer [refre
-                                                            sh]]
+                      [clojure.tools.namespace.repl :refer [refresh]]
 
                       ;; inject into clojure.core
                       clojure.core

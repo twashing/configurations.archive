@@ -154,4 +154,8 @@ source ~/.local/bin/bashmarks.sh
 
 # Docker configuration
 # eval $(docker-machine env default)
+function docker-remove-untagged-images() {
+  docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}')
+}
 
+complete -C aws_completer aws
