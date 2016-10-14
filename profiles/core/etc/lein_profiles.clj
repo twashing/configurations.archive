@@ -13,16 +13,26 @@
                   [mvxcvi/whidbey "1.3.0"]
                   [venantius/ultra "0.4.1"]]
 
-        :dependencies [[org.clojure/tools.nrepl "0.2.12"]
+          :dependencies [[org.clojure/tools.nrepl "0.2.12"]
                        [org.clojure/tools.namespace "0.2.10"]
                        [spyscope "0.1.5"]
                        [io.aviso/pretty "0.1.27"]
-                       [im.chit/vinyasa "0.4.7"]
-                       [leiningen "2.6.1" :exclusions [slingshot
-                                                       org.apache.maven.wagon/wagon-provider-api
-                                                       org.codehaus.plexus/plexus-utils
-                                                       commons-logging]]
-                       [org.apache.maven/maven-aether-provider "3.0.5"]]
+                       [im.chit/vinyasa "0.4.7"
+                        :exclusions [org.apache.maven/maven-aether-provider
+                                     org.codehaus.plexus/plexus-utils
+                                     org.apache.maven/maven-model
+                                     org.apache.maven/maven-model-builder]]
+                       [leiningen "2.6.1"
+                        :exclusions [slingshot
+                                     org.apache.maven.wagon/wagon-provider-api
+                                     org.codehaus.plexus/plexus-utils
+                                     org.apache.maven/maven-model
+                                     org.apache.maven/maven-model-builder
+                                     commons-logging
+                                     slingshot
+                                     org.codehaus.jackson/jackson-core-asl]]
+                       [org.apache.maven/maven-aether-provider "3.0.5"]
+                       [org.apache.maven/maven-model "3.0.5"]]
 
         :injections [(require 'spyscope.core)
                      (require '[vinyasa.inject :as inject])
