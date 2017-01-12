@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -38,6 +39,7 @@ values."
             shell-default-position 'bottom)
      yaml
      bash
+     osx
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
@@ -119,9 +121,9 @@ values."
    ;; dotspacemacs-default-font '("Source Code Pro"
    ;;                             :size 13
    dotspacemacs-default-font '("PragmataPro"
-                               :size 14
-                               :weight normal
-                               :width normal
+                               :size 11
+                               :width condensed
+                               ;; :weight ultra-light
                                :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -317,7 +319,12 @@ in `dotspacemacs/user-config'."
   (setq clojure-enable-fancify-symbols nil)
 
   (use-package hcl-mode
-    :ensure t))
+    :ensure t)
+
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+  (add-to-list 'exec-path "/usr/local/bin")
+  (add-to-list 'exec-path "~/bin")
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -336,7 +343,11 @@ layers configuration. You are free to put any user code."
  '(cider-boot-parameters "cider repl -s wait")
  '(package-selected-packages
    (quote
-    (solarized-theme yaml-mode xterm-color shell-pop multi-term eshell-prompt-extras esh-help toc-org smeargle shm rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv psci psc-ide orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets mmm-mode markdown-toc markdown-mode magit-gitflow htmlize hindent helm-gitignore helm-company helm-c-yasnippet haskell-snippets gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md evil-magit company-statistics company-quickhelp company-ghc company-cabal company cmm-mode clj-refactor cider-eval-sexp-fu cider chruby bundler auto-yasnippet align-cljlet ac-ispell ample-theme ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package spacemacs-theme spaceline smooth-scrolling restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl sass-mode company-web web-mode tagedit slim-mode scss-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode web-completion-data uuidgen powerline rake purescript-mode dash-functional org-projectile pcache org alert log4e gntp org-download mwim minitest link-hint intero flycheck hlint-refactor parent-mode hide-comnt projectile helm-hoogle request git-link flx eyebrowse evil-visual-mark-mode evil-unimpaired magit magit-popup git-commit with-editor smartparens iedit evil-ediff anzu evil goto-chg undo-tree eshell-z dumb-jump f diminish company-ghci ghc haskell-mode column-enforce-mode clojure-snippets hydra inflections edn multiple-cursors paredit s peg highlight seq spinner queue pkg-info clojure-mode epl inf-ruby bind-map bind-key yasnippet packed dash helm avy helm-core async auto-complete popup package-build solarized-theme yaml-mode xterm-color shell-pop multi-term eshell-prompt-extras esh-help toc-org smeargle shm rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv psci psc-ide orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets mmm-mode markdown-toc markdown-mode magit-gitflow htmlize hindent helm-gitignore helm-company helm-c-yasnippet haskell-snippets gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md evil-magit company-statistics company-quickhelp company-ghc company-cabal company cmm-mode clj-refactor cider-eval-sexp-fu cider chruby bundler auto-yasnippet align-cljlet ac-ispell ample-theme ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package spacemacs-theme spaceline smooth-scrolling restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(safe-local-variable-values
+   (quote
+    ((cider-cljs-lein-repl . "(boot (start))")
+     (cider-boot-parameters . "repl -s wait")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

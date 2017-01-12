@@ -19,6 +19,10 @@ function ubuntu-packages {
 function git-log-tree {
     git log --all --graph --decorate --oneline --simplify-by-decoration
 }
+function switch-emacs {
+  rm ~/.emacs.d
+  ln -s ~/.emacs.$1 ~/.emacs.d
+}
 
 set -o emacs
 
