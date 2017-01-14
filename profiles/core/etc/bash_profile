@@ -11,13 +11,16 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 function ubuntu-version {
-    lsb_release -a
+  lsb_release -a
 }
 function ubuntu-packages {
-    dpkg --get-selections | grep -v deinstall
+  dpkg --get-selections | grep -v deinstall
 }
 function git-log-tree {
-    git log --all --graph --decorate --oneline --simplify-by-decoration
+  git log --all --graph --decorate --oneline --simplify-by-decoration
+}
+function find-in-jar {
+  find $1 -name "*.jar" -exec sh -c "echo; echo Inspecting: {}; jar tvf {} | grep $2" \;
 }
 
 set -o emacs

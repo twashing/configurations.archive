@@ -1,5 +1,5 @@
 {:user {:dependencies [[org.clojure/tools.nrepl "0.2.12"]
-                       [spyscope "0.1.5"]]
+                       [spyscope "0.1.6"]]
         :injections [(require 'spyscope.core)]
         :plugins [[cider/cider-nrepl "0.14.0-SNAPSHOT"]
                   [refactor-nrepl "2.3.0-SNAPSHOT"]]}}
