@@ -22,6 +22,10 @@ function git-log-tree {
 function find-in-jar {
   find $1 -name "*.jar" -exec sh -c "echo; echo Inspecting: {}; jar tvf {} | grep $2" \;
 }
+function switch-emacs {
+  rm ~/.emacs.d
+  ln -s ~/.emacs.$1 ~/.emacs.d
+}
 
 set -o emacs
 
