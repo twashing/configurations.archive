@@ -34,16 +34,20 @@ set -o emacs
 shopt -s extglob
 
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
+export HISTSIZE= 
+export HISTFILESIZE=
 export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
 export SCALA_HOME="~/Tools/scala-2.11.6"
 export GOPATH=/Users/tim.washington
 export PROJECTS_HOME="~/Projects"
+
 export PATH="\
-/sbin:\
 ~/bin:\
+~/local/bin:\
 ~/.cask/bin:\
 ~/.cabal/bin:\
 ~/local/bin:\
+/sbin:\
 /usr/local/heroku/bin:\
 $JAVA_HOME/bin:\
 $GOPATH/bin:\
@@ -249,6 +253,14 @@ function docker-clear-volumes() {
 
 function docker-clear-networks() {
   docker network rm $(docker network ls | tail -n+2 | awk '{if($2 !~ /bridge|none|host/){ print $1 }}')
+}
+
+function docker-attach-to-container() {
+  docker exec -i -t $1 /bin/bash
+}
+
+function docker-container-ip-address() {
+  docker inspect $1
 }
 
 complete -C aws_completer aws
