@@ -36,10 +36,12 @@ shopt -s extglob
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
 export HISTSIZE= 
 export HISTFILESIZE=
-export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home" 
 export SCALA_HOME="~/Tools/scala-2.11.6"
 export GOPATH=/Users/tim.washington
 export PROJECTS_HOME="~/Projects"
+export M2_HOME="/usr/local/apache-maven-3.3.9"
+export M2_REPO="~/.m2/repository"
 
 export PATH="\
 ~/bin:\
@@ -50,8 +52,13 @@ export PATH="\
 /sbin:\
 /usr/local/heroku/bin:\
 $JAVA_HOME/bin:\
+$M2_HOME/bin:\
 $GOPATH/bin:\
 $PATH"
+
+export BAT_THEME="Monokai Extended Light"
+
+source /Users/timothyw/.nix-profile/etc/profile.d/nix.sh
 
 
 # Taken from SO:
@@ -263,4 +270,9 @@ function docker-container-ip-address() {
   docker inspect $1
 }
 
+function git-pull-all() {
+  for i in `ls`; do echo "Pulling: $i"; cd $i; git pull -r; cd -; echo; done
+}
+
 complete -C aws_completer aws
+if [ -e /Users/timothyw/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/timothyw/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
