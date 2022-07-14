@@ -49,6 +49,7 @@ export PATH="\
 ~/.cask/bin:\
 ~/.cabal/bin:\
 ~/local/bin:\
+/usr/local/Cellar/emacs/26.3/bin:\
 /sbin:\
 /usr/local/heroku/bin:\
 $JAVA_HOME/bin:\
@@ -276,3 +277,5 @@ function git-pull-all() {
 
 complete -C aws_completer aws
 if [ -e /Users/timothyw/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/timothyw/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+PATH=$PATH:/opt/metasploit-framework/bin
+export PATH=$PATH:/opt/metasploit-framework/bin

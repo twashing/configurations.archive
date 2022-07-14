@@ -6,7 +6,7 @@
                                [clojure.java.javadoc javadoc]
                                [clojure.reflect reflect]
                                [clojure.repl apropos dir doc find-doc pst source]])]
-        :plugins [[refactor-nrepl "2.4.0"]
-                  [cider/cider-nrepl "0.18.0"]
+        :plugins [;; [refactor-nrepl "2.4.0"]
+                  ;; [cider/cider-nrepl "0.18.0"]
                   [lein-try "0.4.3"]
                   [lein-ancient "0.6.15"]]}}
